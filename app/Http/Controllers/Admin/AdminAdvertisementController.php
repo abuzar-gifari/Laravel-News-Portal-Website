@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\HomeAdvertisement;
+use App\Models\TopAdvertisement;
 use Illuminate\Http\Request;
 
 class AdminAdvertisementController extends Controller
@@ -11,6 +12,11 @@ class AdminAdvertisementController extends Controller
     public function home_ad_show(){
         $home_ad_data = HomeAdvertisement::where('id',1)->first();
         return view('admin.advertisement_home',compact('home_ad_data'));
+    }
+
+    public function top_ad_show(){
+        $top_ad_data = TopAdvertisement::where('id',1)->first();
+        return view('admin.advertisement_top',compact('top_ad_data'));
     }
     
     public function home_advertisement_update(Request $request){
@@ -47,6 +53,30 @@ class AdminAdvertisementController extends Controller
         $home_ad_data->above_footer_ad_status = $request->above_footer_ad_status;
         // update the table
         $home_ad_data->update();
+        return redirect()->back()->with('success_message','Data is Updated Successfully');
+    }
+    
+    public function top_advertisement_update(Request $request){
+        // echo "<pre>";print_r($request->all());die;
+        $top_ad_data = TopAdvertisement::where('id',1)->first();
+
+        // image upload portion
+        if ($request->hasFile('top_ad')) {
+            $request->validate([
+                'top_ad' => 'image|mimes:png,jpg,jpeg,gif'
+            ]);
+            unlink(public_path('uploads/'.$top_ad_data->top_ad));
+            $ext = $request->file('top_ad')->extension();
+            $final_name = 'top_ad'.'.'.$ext;
+            $request->file('top_ad')->move(public_path('uploads/'),$final_name);
+            $top_ad_data->above_search_ad = $final_name;
+        }
+
+        // normal data
+        $top_ad_data->top_ad_url = $request->top_ad_url;
+        $top_ad_data->top_ad_status = $request->top_ad_status;
+        // update the table
+        $top_ad_data->update();
         return redirect()->back()->with('success_message','Data is Updated Successfully');
     }
 }

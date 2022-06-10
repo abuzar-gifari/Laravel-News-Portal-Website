@@ -54,3 +54,9 @@ Route::get('/admin/home-advertisement',[AdminAdvertisementController::class,'hom
 
 // Home Advertisement submit
 Route::post('/admin/home-advertisement-update',[AdminAdvertisementController::class,'home_advertisement_update'])->name('home_advertisement_update');
+
+// Top Advertisement Page Show
+Route::get('/admin/top-advertisement',[AdminAdvertisementController::class,'top_ad_show'])->name('admin_top_ad_show')->middleware('admin:admin');
+
+// Top Advertisement submit
+Route::post('/admin/top-advertisement-update',[AdminAdvertisementController::class,'top_advertisement_update'])->name('top_advertisement_update');

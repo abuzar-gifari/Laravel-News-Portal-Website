@@ -71,9 +71,15 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="ad-section-1">
-                            <a href=""><img src="{{ asset('uploads/ad-1.png') }}" alt=""></a>
-                        </div>
+                        @if ($global_top_ad_data->top_ad_status=="Show")
+                            <div class="ad-section-1">
+                                @if ($data->top_ad_url=="")
+                                    <img src="{{ asset('uploads/'.$global_top_ad_data->top_ad) }}" alt="No Image Found">
+                                @else
+                                    <a href="{{ $global_top_ad_data->top_ad_url }}"><img src="{{ asset('uploads/'.$global_top_ad_data->top_ad) }}" alt="No Image Found"></a>
+                                @endif
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

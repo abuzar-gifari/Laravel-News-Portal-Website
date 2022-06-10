@@ -58,5 +58,23 @@ Route::post('/admin/home-advertisement-update',[AdminAdvertisementController::cl
 // Top Advertisement Page Show
 Route::get('/admin/top-advertisement',[AdminAdvertisementController::class,'top_ad_show'])->name('admin_top_ad_show')->middleware('admin:admin');
 
-// Top Advertisement submit
+// Top Advertisement Submit
 Route::post('/admin/top-advertisement-update',[AdminAdvertisementController::class,'top_advertisement_update'])->name('top_advertisement_update');
+
+// Sidebar Advertisement Page Show
+Route::get('/admin/sidebar-advertisement',[AdminAdvertisementController::class,'sidebar_ad_show'])->name('admin_sidebar_ad_show')->middleware('admin:admin');
+
+// Sidebar Advertisement Create Page Show
+Route::get('/admin/sidebar-advertisement-create',[AdminAdvertisementController::class,'sidebar_ad_create'])->name('admin_sidebar_ad_create')->middleware('admin:admin');
+
+// Sidebar Advertisement Submit/Store
+Route::post('/admin/sidebar-advertisement-submit',[AdminAdvertisementController::class,'sidebar_ad_store'])->name('admin_sidebar_ad_store');
+
+// Sidebar Advertisement Edit Page Show
+Route::get('/admin/sidebar-advertisement-edit/{id}',[AdminAdvertisementController::class,'sidebar_ad_edit'])->name('admin_sidebar_ad_edit')->middleware('admin:admin');
+
+// Sidebar Advertisement Update
+Route::post('/admin/sidebar-advertisement-update/{id}',[AdminAdvertisementController::class,'sidebar_ad_update'])->name('admin_sidebar_ad_update');
+
+// Sidebar Advertisement Data Delete
+Route::get('/admin/sidebar-advertisement-delete/{id}',[AdminAdvertisementController::class,'sidebar_ad_delete'])->name('admin_sidebar_ad_delete');

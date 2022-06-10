@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\HomeAdvertisement;
+use App\Models\SidebarAdvertisement;
 use App\Models\TopAdvertisement;
 use Illuminate\Http\Request;
 
@@ -78,5 +79,74 @@ class AdminAdvertisementController extends Controller
         // update the table
         $top_ad_data->update();
         return redirect()->back()->with('success_message','Data is Updated Successfully');
+    }
+
+    public function sidebar_ad_show(){
+        $sidebar_ad_data = SidebarAdvertisement::get();
+        return view('admin.advertisement_sidebar',compact('sidebar_ad_data'));
+    }
+
+    public function sidebar_ad_create(){
+        return view('admin.advertisement_sidebar_create');
+    }
+
+    public function sidebar_ad_store(Request $request){
+        $sidebar_ad_data = new SidebarAdvertisement();
+        // validation
+        $request->validate([
+            //  Call to a member function extension() on null,
+            //  error cames because of not using 'required'
+            'sidebar_ad' => 'required|image|mimes:png,jpg,jpeg,gif'
+        ]);
+        // image upload
+        $ext = $request->file('sidebar_ad')->extension();
+        $final_name = 'sidebar_ad_'.time().'.'.$ext;
+        $request->file('sidebar_ad')->move(public_path('uploads/'),$final_name);
+        $sidebar_ad_data->sidebar_ad = $final_name;
+        // normal data
+        $sidebar_ad_data->sidebar_ad_url = $request->sidebar_ad_url;
+        $sidebar_ad_data->sidebar_ad_location = $request->sidebar_ad_location;
+        // update the table
+        $sidebar_ad_data->save();
+        return redirect()->route('admin_sidebar_ad_show')->with('success_message','Data is Saved');
+    }
+
+    public function sidebar_ad_edit($id){
+        $data = SidebarAdvertisement::where('id',$id)->first();
+        return view('admin.advertisement_sidebar_edit',compact('data'));
+    }
+
+    public function sidebar_ad_update(Request $request,$id){
+        $sidebar_data = SidebarAdvertisement::where('id',$id)->first();
+        // validation
+        $request->validate([
+            'sidebar_ad' => 'image|mimes:png,jpg,jpeg,gif'
+        ]);
+        // image upload portion
+        if ($request->hasFile('sidebar_ad')) {
+            $request->validate([
+                'sidebar_ad' => 'image|mimes:png,jpg,jpeg,gif'
+            ]);
+            unlink(public_path('uploads/'.$sidebar_data->sidebar_ad));
+            $ext = $request->file('sidebar_ad')->extension();
+            $final_name = 'sidebar_ad_'.time().'.'.$ext;
+            $request->file('sidebar_ad')->move(public_path('uploads/'),$final_name);
+            $sidebar_data->sidebar_ad = $final_name;
+        }
+        // normal data
+        $sidebar_data->sidebar_ad_url = $request->sidebar_ad_url;
+        $sidebar_data->sidebar_ad_location = $request->sidebar_ad_location;
+        // update the table
+        $sidebar_data->update();
+        return redirect()->route('admin_sidebar_ad_show')->with('success_message','Data is Updated');
+    }
+
+    public function sidebar_ad_delete($id){
+        $sidebar_data = SidebarAdvertisement::where('id',$id)->first();
+        // when data is deleted then must be picture will be unlink
+        unlink(public_path('uploads/'.$sidebar_data->sidebar_ad)); 
+        // delete that info    
+        $sidebar_data->delete();
+        return redirect()->route('admin_sidebar_ad_show')->with('success_message','Data is Deleted');   
     }
 }

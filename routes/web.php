@@ -4,13 +4,19 @@
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Front\AboutController;
+use App\Http\Controllers\Front\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*Frontend Routes*/
 
-/*Admin Routes*/
+// view the first page
+Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/about',[AboutController::class,'index'])->name('about');
+
+
+
+/*Admin Panel Routes*/
 
 // view dashboard page
 Route::get('/admin/home',[AdminHomeController::class,'index'])->name('admin_home')->middleware('admin:admin');// middleware name: guard name

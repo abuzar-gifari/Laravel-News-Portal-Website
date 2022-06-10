@@ -96,15 +96,23 @@
         </div>
     </div>
 </div>
-<div class="ad-section-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <a href=""><img src="{{ asset('uploads/ad-1.png') }}" alt=""></a>
+
+@if ($data->above_search_ad_status=="Show")
+    <div class="ad-section-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @if ($data->above_search_ad_url=="")
+                        <img src="{{ asset('uploads/'.$data->above_search_ad) }}" alt="No Image Found">
+                    @else
+                        <a href="{{ $data->above_search_ad_url }}" target="_blank"><img src="{{ asset('uploads/'.$data->above_search_ad) }}" alt="No Image Found"></a>
+                    @endif
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>    
+@endif
+
 <div class="search-section">
     <div class="container">
         <div class="inner">
@@ -882,13 +890,20 @@
         </div>
     </div>
 </div>
-<div class="ad-section-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <a href=""><img src="{{ asset('uploads/ad-1.png') }}" alt=""></a>
+
+@if ($data->above_footer_ad_status=="Show")
+    <div class="ad-section-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @if ($data->above_footer_ad_url=="")
+                        <img src="{{ asset('uploads/'.$data->above_footer_ad) }}" alt="No Image Found">
+                    @else
+                        <a href="{{ $data->above_footer_ad_url }}" target="_blank"><img src="{{ asset('uploads/'.$data->above_footer_ad) }}" alt="No Image Found"></a>
+                    @endif
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>    
+@endif
 @endsection

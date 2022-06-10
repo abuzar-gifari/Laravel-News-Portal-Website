@@ -1,6 +1,7 @@
 <?php
 //() {} []
 
+use App\Http\Controllers\Admin\AdminAdvertisementController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -47,3 +48,9 @@ Route::get('/admin/edit-profile',[AdminProfileController::class,'admin_edit_prof
 
 // admin edit profile submit
 Route::post('/admin/edit-profile-submit',[AdminProfileController::class,'edit_profile_submit'])->name('edit_profile_submit');
+
+// Home Advertisement Page Show
+Route::get('/admin/home-advertisement',[AdminAdvertisementController::class,'home_ad_show'])->name('admin_home_ad_show')->middleware('admin:admin');
+
+// Home Advertisement submit
+Route::post('/admin/home-advertisement-update',[AdminAdvertisementController::class,'home_advertisement_update'])->name('home_advertisement_update');

@@ -26,7 +26,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>News</span></a>
                 <ul class="dropdown-menu">
                     <li class=""><a class="nav-link" href="{{ route('admin_category_show') }}"><i class="fas fa-angle-right"></i> All Categories</a></li>
-                    <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i>Sub Categories</a></li>
+                    <li class=""><a class="nav-link" href="{{ route('admin_sub_category_show') }}"><i class="fas fa-angle-right"></i>Sub Categories</a></li>
                     <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i>Posts</a></li>
                 </ul>
             </li>

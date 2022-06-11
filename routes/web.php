@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,10 @@ Route::get('/admin/edit-profile',[AdminProfileController::class,'admin_edit_prof
 // admin edit profile submit
 Route::post('/admin/edit-profile-submit',[AdminProfileController::class,'edit_profile_submit'])->name('edit_profile_submit');
 
+
+
+/* Advertisement Routes */
+
 // Home Advertisement Page Show
 Route::get('/admin/home-advertisement',[AdminAdvertisementController::class,'home_ad_show'])->name('admin_home_ad_show')->middleware('admin:admin');
 
@@ -80,6 +85,8 @@ Route::post('/admin/sidebar-advertisement-update/{id}',[AdminAdvertisementContro
 // Sidebar Advertisement Data Delete
 Route::get('/admin/sidebar-advertisement-delete/{id}',[AdminAdvertisementController::class,'sidebar_ad_delete'])->name('admin_sidebar_ad_delete');
 
+
+
 /* Category Routes */
 
 // Show Category Page
@@ -90,3 +97,25 @@ Route::get('/admin/category/create',[AdminCategoryController::class,'create'])->
 
 // Category Submit/Store
 Route::post('/admin/category/store',[AdminCategoryController::class,'store'])->name('admin_category_store');
+
+
+
+/* Sub Category Routes */
+
+// Show Sub Category Page
+Route::get('/admin/sub-category/show',[AdminSubCategoryController::class,'show'])->name('admin_sub_category_show')->middleware('admin:admin');
+
+// Create Sub Category Page
+Route::get('/admin/sub-category/create',[AdminSubCategoryController::class,'create'])->name('admin_sub_category_create')->middleware('admin:admin');
+
+// Sub Category Submit/Store
+Route::post('/admin/sub-category/store',[AdminSubCategoryController::class,'store'])->name('admin_sub_category_store');
+
+// Sub Category Edit Page Show
+Route::get('/admin/sub-category/edit/{id}',[AdminSubCategoryController::class,'edit'])->name('admin_sub_category_edit')->middleware('admin:admin');
+
+// Sub Category Update
+Route::post('/admin/sub-category-update/{id}',[AdminSubCategoryController::class,'update'])->name('admin_sub_category_update');
+
+// Sub Category Data Delete
+Route::get('/admin/sub-category-delete/{id}',[AdminSubCategoryController::class,'delete'])->name('admin_sub_category_delete');

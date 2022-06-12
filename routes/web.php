@@ -142,3 +142,6 @@ Route::post('/admin/post-update/{id}',[AdminPostController::class,'update'])->na
 
 // Post Data Delete
 Route::get('/admin/post-delete/{id}',[AdminPostController::class,'delete'])->name('admin_post_delete');
+
+// Tag Delete
+Route::get('/admin/post/tag/delete/{id}/{post_id}',[AdminPostController::class,'delete_tag'])->name('admin_post_tag_delete')->middleware('admin:admin');

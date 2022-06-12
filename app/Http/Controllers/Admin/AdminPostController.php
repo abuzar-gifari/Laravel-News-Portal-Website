@@ -81,31 +81,65 @@ class AdminPostController extends Controller
     
     // post edit
     public function edit($id){
-        // $subcategory = SubCategory::where('id',$id)->first();
-        // // pass the category information to the view file
-        // $categories = Category::orderBy('category_order','asc')->get();
-        // return view('admin.sub_categories_edit',compact('subcategory','categories'));
+        $posts = Post::where('id',$id)->first();
+        $existing_tags = Tag::where('post_id',$id)->get();
+        $subcategories = SubCategory::with('rCategory')->get();
+        return view('admin.posts_edit',compact('posts','subcategories','existing_tags'));
     }
-    
+
+    // delete tag
+    public function delete_tag($id,$post_id){
+        $tag = Tag::where('id',$id)->first();
+        $tag->delete();
+        return redirect()->route('admin_post_edit',$post_id)->with('success_message','Data is Deleted Successfully');
+    }
+
     // post update
     public function update(Request $request,$id){
-        // // create category model object
-        // $subcategory = SubCategory::where('id',$id)->first();
-        // // validation
-        // $request->validate([
-        //     'sub_category_name' => 'required',
-        //     'show_on_menu' => 'required',
-        //     'sub_category_order' => 'required',
-        //     'category_id' => 'required'
-        // ]);
-        // // send data to the database
-        // $subcategory->sub_category_name = $request->sub_category_name;
-        // $subcategory->show_on_menu = $request->show_on_menu;
-        // $subcategory->sub_category_order = $request->sub_category_order;
-        // $subcategory->category_id = $request->category_id;
-        // // update the table
-        // $subcategory->update();
-        // return redirect()->route('admin_sub_category_show')->with('success_message','Sub Category Updated Successfully');
+        // validation
+        $request->validate([
+            'post_title' => 'required',
+            'post_detail' => 'required',
+        ]);
+
+        $post = Post::where('id',$id)->first();
+
+        // post photo upload
+        if ($request->hasFile('post_photo')) {
+            $request->validate([
+                'post_photo' => 'image|mimes:png,jpg,jpeg,gif'
+            ]);
+            unlink(public_path('uploads/'.$post->post_photo));
+            $ext = $request->file('post_photo')->extension();
+            $final_name = 'post_photo_'.time().'.'.$ext;
+            $request->file('post_photo')->move(public_path('uploads/'),$final_name);
+            $post->post_photo = $final_name;
+        }
+
+        // send data to the database
+        $post->sub_category_id = $request->sub_category_id;
+        $post->post_title = $request->post_title;
+        $post->post_detail = $request->post_detail;
+        //$post->post_photo = $final_name;
+        $post->visitors = 1;
+        $post->author_id = 0;
+        $post->admin_id = Auth::guard('admin')->user()->id; // we can get admin id
+        $post->is_share = $request->is_share;
+        $post->is_comment = $request->is_comment;
+        // store in the table
+        $post->update();
+
+        // tags are separated by comma.
+        $tags_array = explode(',',$request->tags);
+        //dd($tags_array);
+        for ($i=0; $i < count($tags_array); $i++) { 
+            $tag = new Tag();
+            $tag->post_id = $id;
+            $tag->tag_name = $tags_array[$i];
+            $tag->save();
+        }
+
+        return redirect()->route('admin_post_show')->with('success_message','Post Updated Successfully');
     }
 
     // post delete

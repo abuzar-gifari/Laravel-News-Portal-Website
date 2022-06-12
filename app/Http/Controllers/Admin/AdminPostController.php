@@ -33,10 +33,9 @@ class AdminPostController extends Controller
 
     // post store / submit
     public function store(Request $request){
-        // create post model object
+        
         $post = new Post();
 
-        // validation
         $request->validate([
             'post_title' => 'required',
             'post_detail' => 'required',
@@ -65,13 +64,23 @@ class AdminPostController extends Controller
         // store in the table
         $post->save();
 
-        // tags are separated by comma.
+        
+        /* Tag Data Entry In The Database */
+
+        // duplicate tag value entry prevention case
+        $tags_array = [];
         $tags_array = explode(',',$request->tags);
-        //dd($tags_array);
+        // $tags_array = array_unique($tags_array);
         for ($i=0; $i < count($tags_array); $i++) { 
+            $tags_array_new[] = trim($tags_array[$i]);
+        }
+        $tags_array_new = array_values(array_unique($tags_array_new)); // final array
+
+        
+        for ($i=0; $i < count($tags_array_new); $i++) { 
             $tag = new Tag();
             $tag->post_id = $auto_increment_id;
-            $tag->tag_name = $tags_array[$i];
+            $tag->tag_name = $tags_array_new[$i];
             $tag->save();
         }
 
@@ -133,10 +142,16 @@ class AdminPostController extends Controller
         $tags_array = explode(',',$request->tags);
         //dd($tags_array);
         for ($i=0; $i < count($tags_array); $i++) { 
-            $tag = new Tag();
-            $tag->post_id = $id;
-            $tag->tag_name = $tags_array[$i];
-            $tag->save();
+
+            // duplicate value entry prevention case
+            $total = Tag::where('post_id',$id)->where('tag_name',$tags_array[$i])->count();
+            if (!$total) {
+                $tag = new Tag();
+                $tag->post_id = $id;
+                $tag->tag_name = $tags_array[$i];
+                $tag->save();
+            }
+
         }
 
         return redirect()->route('admin_post_show')->with('success_message','Post Updated Successfully');
@@ -144,9 +159,7 @@ class AdminPostController extends Controller
 
     // post delete
     public function delete($id){
-        // $subcategory = SubCategory::where('id',$id)->first();
-        // $subcategory->delete();
-        // return redirect()->route('admin_sub_category_show')->with('success_message','Data is Deleted Successfully');
+        
     }
     
 }

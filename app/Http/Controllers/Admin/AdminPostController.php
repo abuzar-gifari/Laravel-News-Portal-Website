@@ -67,22 +67,26 @@ class AdminPostController extends Controller
         
         /* Tag Data Entry In The Database */
 
-        // duplicate tag value entry prevention case
-        $tags_array = [];
-        $tags_array = explode(',',$request->tags);
-        // $tags_array = array_unique($tags_array);
-        for ($i=0; $i < count($tags_array); $i++) { 
-            $tags_array_new[] = trim($tags_array[$i]);
-        }
-        $tags_array_new = array_values(array_unique($tags_array_new)); // final array
+        if ($request->tags != "") {
 
-        
-        for ($i=0; $i < count($tags_array_new); $i++) { 
-            $tag = new Tag();
-            $tag->post_id = $auto_increment_id;
-            $tag->tag_name = $tags_array_new[$i];
-            $tag->save();
+            // duplicate tag value entry prevention case
+            $tags_array = [];
+            $tags_array = explode(',',$request->tags);
+            // $tags_array = array_unique($tags_array);
+            for ($i=0; $i < count($tags_array); $i++) { 
+                $tags_array_new[] = trim($tags_array[$i]);
+            }
+            $tags_array_new = array_values(array_unique($tags_array_new)); // final array
+
+            
+            for ($i=0; $i < count($tags_array_new); $i++) { 
+                $tag = new Tag();
+                $tag->post_id = $auto_increment_id;
+                $tag->tag_name = $tags_array_new[$i];
+                $tag->save();
+            }    
         }
+        
 
         return redirect()->route('admin_post_show')->with('success_message','Post Created Successfully');
     }
@@ -138,20 +142,21 @@ class AdminPostController extends Controller
         // store in the table
         $post->update();
 
-        // tags are separated by comma.
-        $tags_array = explode(',',$request->tags);
-        //dd($tags_array);
-        for ($i=0; $i < count($tags_array); $i++) { 
 
-            // duplicate value entry prevention case
-            $total = Tag::where('post_id',$id)->where('tag_name',$tags_array[$i])->count();
-            if (!$total) {
-                $tag = new Tag();
-                $tag->post_id = $id;
-                $tag->tag_name = $tags_array[$i];
-                $tag->save();
-            }
-
+        if ($request->tags != "") {
+            // tags are separated by comma.
+            $tags_array = explode(',',$request->tags);
+            //dd($tags_array);
+            for ($i=0; $i < count($tags_array); $i++) { 
+                // duplicate value entry prevention case
+                $total = Tag::where('post_id',$id)->where('tag_name',$tags_array[$i])->count();
+                if (!$total) {
+                    $tag = new Tag();
+                    $tag->post_id = $id;
+                    $tag->tag_name = $tags_array[$i];
+                    $tag->save();
+                }
+            }    
         }
 
         return redirect()->route('admin_post_show')->with('success_message','Post Updated Successfully');
@@ -159,7 +164,13 @@ class AdminPostController extends Controller
 
     // post delete
     public function delete($id){
-        
+        $post = Post::where('id',$id)->first();
+        $post->delete();
+        // unlink the photo
+        unlink(public_path('uploads/'.$post->post_photo));
+        // remove all the tags from the specific post
+        Tag::where('post_id',$id)->delete();
+        return redirect()->route('admin_post_show')->with('success_message','Data is Deleted Successfully');
     }
     
 }

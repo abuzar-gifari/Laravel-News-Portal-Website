@@ -1,5 +1,7 @@
 @extends('front.layout.app')
 @section('content')
+
+@if ($setting_data->news_ticker_status == "Show")
 <div class="news-ticker-item">
     <div class="container">
         <div class="row">
@@ -8,18 +10,23 @@
                     <div class="acme-news-ticker-label">Latest News</div>
                     <div class="acme-news-ticker-box">
                         <ul class="my-news-ticker">
-                            <li><a href="">Helicopter crashes into waves off crowded Miami beach</a></li>
-                            <li><a href="">Canadian police appear to end protesters' siege of Ottawa</a></li>
-                            <li><a href="">Speedskating champ chooses sportsmanship over Olympic medal</a></li>
-                            <li><a href="">USDA head: US farmers to help if Ukraine exports threatened</a></li>
-                            <li><a href="">Actor Lindsey Pearlman found dead after going missing in LA</a></li>
+                            @php $i = 0; @endphp
+                            @foreach ($post_data as $item)
+                                @php $i++; @endphp
+                                @if ($i > $setting_data->news_ticker_total)
+                                    @break
+                                @endif
+                              <li><a href="">{{ $item->post_title }}</a></li>  
+                            @endforeach
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div> 
+@endif
+
 <div class="home-main">
     <div class="container">
         <div class="row g-2">

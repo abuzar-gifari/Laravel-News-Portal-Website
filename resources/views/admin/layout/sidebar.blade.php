@@ -29,7 +29,8 @@
             <li class="nav-item dropdown 
             {{ Request::is('admin/category/show') ? 'active' : '' }} ||
             {{ Request::is('admin/sub-category/show') ? 'active' : '' }} ||
-            {{ Request::is('admin/post/show') ? 'active' : '' }}">
+            {{ Request::is('admin/post/show') ? 'active' : '' }}
+            ">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>News</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/category/show') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_category_show') }}"><i class="fas fa-angle-right"></i> All Categories</a></li>
@@ -37,6 +38,8 @@
                     <li class="{{ Request::is('admin/post/show') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_post_show') }}"><i class="fas fa-angle-right"></i>Posts</a></li>
                 </ul>
             </li>
+
+            <li class="{{ Request::is('admin/setting') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_setting') }}"><i class="fas fa-hand-point-right"></i> <span>Setting</span></a></li>
 
             {{-- <li class="nav-item dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Dropdown Items</span></a>

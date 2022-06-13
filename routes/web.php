@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\HomeController;
@@ -145,3 +146,12 @@ Route::get('/admin/post-delete/{id}',[AdminPostController::class,'delete'])->nam
 
 // Tag Delete
 Route::get('/admin/post/tag/delete/{id}/{post_id}',[AdminPostController::class,'delete_tag'])->name('admin_post_tag_delete')->middleware('admin:admin');
+
+
+/* Setting Routes */
+
+// Show Setting Page
+Route::get('/admin/setting',[AdminSettingController::class,'index'])->name('admin_setting')->middleware('admin:admin');
+
+// Setting Update
+Route::post('/admin/setting-update',[AdminSettingController::class,'update'])->name('admin_setting_update');

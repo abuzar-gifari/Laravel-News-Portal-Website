@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*Frontend Routes*/
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 // view the first page
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[AboutController::class,'index'])->name('about');
+Route::get('/post-detail/{id}',[PostController::class,'detail'])->name('news_detail');
 
 
 

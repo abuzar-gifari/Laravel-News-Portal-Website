@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        @if ($global_top_ad_data->top_ad_status=="Show")
+                        {{-- @if ($global_top_ad_data->top_ad_status=="Show")
                             <div class="ad-section-1">
                                 @if ($data->top_ad_url=="")
                                     <img src="{{ asset('uploads/'.$global_top_ad_data->top_ad) }}" alt="No Image Found">
@@ -79,7 +79,7 @@
                                     <a href="{{ $global_top_ad_data->top_ad_url }}"><img src="{{ asset('uploads/'.$global_top_ad_data->top_ad) }}" alt="No Image Found"></a>
                                 @endif
                             </div>
-                        @endif
+                        @endif --}}
                     </div>
                 </div>
             </div>

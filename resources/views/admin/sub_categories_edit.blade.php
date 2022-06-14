@@ -1,5 +1,5 @@
 @extends('admin.layout.app')
-@section('heading','Create Sub-Category')
+@section('heading','Edit Sub-Category')
 @section('content')
 <div class="section-body">
     <form action="{{ route('admin_sub_category_update',$subcategory->id) }}" method="post">
@@ -8,7 +8,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="text-center">Create Sub-Category</h4>
+                        <h4 class="text-center">Edit Sub-Category</h4>
                         @csrf
                         <div class="form-group mb-3">
                             <label>Sub-Category Name</label>
@@ -21,6 +21,17 @@
                                     selected
                                 @endif>Show</option>
                                 <option value="Hide" @if ($subcategory->show_on_menu=="Hide")
+                                    selected
+                                @endif>Hide</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Show on Home?</label>
+                            <select name="show_on_home" class="form-control">
+                                <option value="Show" @if ($subcategory->show_on_home=="Show")
+                                    selected
+                                @endif>Show</option>
+                                <option value="Hide" @if ($subcategory->show_on_home=="Hide")
                                     selected
                                 @endif>Hide</option>
                             </select>

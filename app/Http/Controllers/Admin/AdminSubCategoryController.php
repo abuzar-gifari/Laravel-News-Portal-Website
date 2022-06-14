@@ -38,6 +38,7 @@ class AdminSubCategoryController extends Controller
         // send data to the database
         $subcategory->sub_category_name = $request->sub_category_name;
         $subcategory->show_on_menu = $request->show_on_menu;
+        $subcategory->show_on_home = $request->show_on_home;
         $subcategory->sub_category_order = $request->sub_category_order;
         $subcategory->category_id = $request->category_id;
         // store in the table
@@ -68,6 +69,7 @@ class AdminSubCategoryController extends Controller
         // send data to the database
         $subcategory->sub_category_name = $request->sub_category_name;
         $subcategory->show_on_menu = $request->show_on_menu;
+        $subcategory->show_on_home = $request->show_on_home;
         $subcategory->sub_category_order = $request->sub_category_order;
         $subcategory->category_id = $request->category_id;
         // update the table

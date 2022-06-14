@@ -10,7 +10,12 @@ class SubCategory extends Model
     use HasFactory;
     protected $guarded = [];
     protected $table = "sub_categories";
+    
     public function rCategory(){
         return $this->belongsTo(Category::class,'category_id');
+    }
+
+    public function rPost(){
+        return $this->hasMany(Post::class)->orderBy('id','desc');
     }
 }

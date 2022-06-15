@@ -5,12 +5,14 @@ use App\Http\Controllers\Admin\AdminAdvertisementController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\SubCategoryController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 // view the first page
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[AboutController::class,'index'])->name('about');
+Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_gallery');
 Route::get('/post-detail/{id}',[PostController::class,'detail'])->name('news_detail');
 Route::get('/category/{id}',[SubCategoryController::class,'index'])->name('category');
 
@@ -159,3 +162,25 @@ Route::get('/admin/setting',[AdminSettingController::class,'index'])->name('admi
 
 // Setting Update
 Route::post('/admin/setting-update',[AdminSettingController::class,'update'])->name('admin_setting_update');
+
+
+
+/* Photo Routes */
+
+// Show Sub Category Page
+Route::get('/admin/photo/show',[AdminPhotoController::class,'show'])->name('admin_photo_show')->middleware('admin:admin');
+
+// Create Sub Category Page
+Route::get('/admin/photo/create',[AdminPhotoController::class,'create'])->name('admin_photo_create')->middleware('admin:admin');
+
+// Sub Category Submit/Store
+Route::post('/admin/photo/store',[AdminPhotoController::class,'store'])->name('admin_photo_store');
+
+// Sub Category Edit Page Show
+Route::get('/admin/photo/edit/{id}',[AdminPhotoController::class,'edit'])->name('admin_photo_edit')->middleware('admin:admin');
+
+// Sub Category Update
+Route::post('/admin/photo/update/{id}',[AdminPhotoController::class,'update'])->name('admin_photo_update');
+
+// Sub Category Data Delete
+Route::get('/admin/photo/delete/{id}',[AdminPhotoController::class,'delete'])->name('admin_photo_delete');

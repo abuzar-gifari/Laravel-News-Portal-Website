@@ -32,12 +32,27 @@
                                             <input type="text" class="form-control" name="news_ticker_total" value="{{ $setting->news_ticker_total }}">
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label>Status</label>
+                                            <label>News Ticker Status</label>
                                             <select name="news_ticker_status" class="form-control">
                                                 <option value="Show" @if ($setting->news_ticker_status == "Show")
                                                     selected
                                                 @endif>Show</option>
                                                 <option value="Hide" @if ($setting->news_ticker_status == "Hide")
+                                                    selected
+                                                @endif>Hide</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Video Item Total</label>
+                                            <input type="text" class="form-control" name="video_total" value="{{ $setting->video_total }}">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label>Video Item Status</label>
+                                            <select name="video_status" class="form-control">
+                                                <option value="Show" @if ($setting->video_status == "Show")
+                                                    selected
+                                                @endif>Show</option>
+                                                <option value="Hide" @if ($setting->video_status == "Hide")
                                                     selected
                                                 @endif>Hide</option>
                                             </select>

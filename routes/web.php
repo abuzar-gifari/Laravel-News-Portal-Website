@@ -10,19 +10,21 @@ use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
+use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\SubCategoryController;
+use App\Http\Controllers\Front\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /*Frontend Routes*/
 
-// view the first page
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[AboutController::class,'index'])->name('about');
 Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_gallery');
+Route::get('/video-gallery',[VideoController::class,'index'])->name('video_gallery');
 Route::get('/post-detail/{id}',[PostController::class,'detail'])->name('news_detail');
 Route::get('/category/{id}',[SubCategoryController::class,'index'])->name('category');
 
@@ -184,3 +186,24 @@ Route::post('/admin/photo/update/{id}',[AdminPhotoController::class,'update'])->
 
 // Sub Category Data Delete
 Route::get('/admin/photo/delete/{id}',[AdminPhotoController::class,'delete'])->name('admin_photo_delete');
+
+
+/* Video Routes */
+
+// Show Video Page
+Route::get('/admin/video/show',[AdminVideoController::class,'show'])->name('admin_video_show')->middleware('admin:admin');
+
+// Create Video Page
+Route::get('/admin/video/create',[AdminVideoController::class,'create'])->name('admin_video_create')->middleware('admin:admin');
+
+// Video Submit/Store
+Route::post('/admin/video/store',[AdminVideoController::class,'store'])->name('admin_video_store');
+
+// Video Edit Page Show
+Route::get('/admin/video/edit/{id}',[AdminVideoController::class,'edit'])->name('admin_video_edit')->middleware('admin:admin');
+
+// Video Update
+Route::post('/admin/video/update/{id}',[AdminVideoController::class,'update'])->name('admin_video_update');
+
+// Video Data Delete
+Route::get('/admin/video/delete/{id}',[AdminVideoController::class,'delete'])->name('admin_video_delete');

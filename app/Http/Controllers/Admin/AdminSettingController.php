@@ -21,6 +21,8 @@ class AdminSettingController extends Controller
         $setting = Setting::where('id',1)->first();
         $setting->news_ticker_total = $request->news_ticker_total;
         $setting->news_ticker_status = $request->news_ticker_status;
+        $setting->video_total = $request->video_total;
+        $setting->video_status = $request->video_status;
         $setting->update();
 
         return redirect()->route('admin_setting')->with('success_message','Data Updated');

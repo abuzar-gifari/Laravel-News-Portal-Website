@@ -338,98 +338,60 @@
         </div>
     </div>
 </div>
-<div class="video-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="video-heading">
-                    <h2>Videos</h2>
+
+<!-- Videos Part Start -->
+@if ($setting_data->video_status == "Show")
+    <div class="video-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="video-heading">
+                        <h2>Videos</h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="video-carousel owl-carousel">
-                    <div class="item">
-                        <div class="video-thumb">
-                            <img src="http://img.youtube.com/vi/tvsyp08Uylw/0.jpg" alt="">
-                            <div class="bg"></div>
-                            <div class="icon">
-                                <a href="http://www.youtube.com/watch?v=tvsyp08Uylw" class="video-button"><i class="fas fa-play"></i></a>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="video-carousel owl-carousel">
+
+                        @foreach ($videos_data as $single_video)
+
+                            @if ($loop->iteration > $setting_data->video_total)
+                                @break
+                            @endif
+
+                            <div class="item">
+                                <div class="video-thumb">
+                                    <img src="http://img.youtube.com/vi/{{ $single_video->video_id }}/0.jpg">
+                                    <div class="bg"></div>
+                                    <div class="icon">
+                                        <a href="http://www.youtube.com/watch?v={{ $single_video->video_id }}" class="video-button"><i class="fas fa-play"></i></a>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <a href="javascript:void;">{!! $single_video->caption !!}</a>
+                                </div>
+                                <div class="video-date">
+                                    @php
+                                        $ts = strtotime($single_video->updated_at);
+                                        $updated_at = date('d F, Y',$ts);
+                                    @endphp
+                                    <i class="fas fa-calendar-alt"></i> {{ $updated_at }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="video-caption">
-                            <a href="">Haaland scores before going off injured in Dortmund win and it is very real</a>
-                        </div>
-                        <div class="video-date">
-                            <i class="fas fa-calendar-alt"></i> Feb 28, 2022
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-thumb">
-                            <img src="http://img.youtube.com/vi/PKATJiyz0iI/0.jpg" alt="">
-                            <div class="bg"></div>
-                            <div class="icon">
-                                <a href="http://www.youtube.com/watch?v=PKATJiyz0iI" class="video-button"><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="video-caption">
-                            <a href="">Haaland scores before going off injured in Dortmund win and it is very real</a>
-                        </div>
-                        <div class="video-date">
-                            <i class="fas fa-calendar-alt"></i> Feb 28, 2022
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-thumb">
-                            <img src="http://img.youtube.com/vi/ekgUjyWe1Yc/0.jpg" alt="">
-                            <div class="bg"></div>
-                            <div class="icon">
-                                <a href="http://www.youtube.com/watch?v=ekgUjyWe1Yc" class="video-button"><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="video-caption">
-                            <a href="">Haaland scores before going off injured in Dortmund win and it is very real</a>
-                        </div>
-                        <div class="video-date">
-                            <i class="fas fa-calendar-alt"></i> Feb 28, 2022
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-thumb">
-                            <img src="http://img.youtube.com/vi/LEcpS6pX9kY/0.jpg" alt="">
-                            <div class="bg"></div>
-                            <div class="icon">
-                                <a href="http://www.youtube.com/watch?v=LEcpS6pX9kY" class="video-button"><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="video-caption">
-                            <a href="">Haaland scores before going off injured in Dortmund win and it is very real</a>
-                        </div>
-                        <div class="video-date">
-                            <i class="fas fa-calendar-alt"></i> Feb 28, 2022
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-thumb">
-                            <img src="http://img.youtube.com/vi/N88TwF4D2PI/0.jpg" alt="">
-                            <div class="bg"></div>
-                            <div class="icon">
-                                <a href="http://www.youtube.com/watch?v=N88TwF4D2PI" class="video-button"><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="video-caption">
-                            <a href="">Haaland scores before going off injured in Dortmund win and it is very real</a>
-                        </div>
-                        <div class="video-date">
-                            <i class="fas fa-calendar-alt"></i> Feb 28, 2022
-                        </div>
+                        @endforeach
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+@endif
+
+
+<!-- Videos Part End -->
+
+
 
 @if ($data->above_footer_ad_status=="Show")
     <div class="ad-section-3">

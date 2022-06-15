@@ -92,7 +92,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{{ route('photo_gallery') }}">Photo Gallery</a></li>
-                                    <li><a class="dropdown-item" href="video-gallery.html">Video Gallery</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('video_gallery') }}">Video Gallery</a></li>
                                 </ul>
                             </li>
                         </ul>

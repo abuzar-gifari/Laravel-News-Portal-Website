@@ -215,7 +215,7 @@
                                         <h2>{{ $item->sub_category_name }}</h2>
                                     </div>
                                     <div class="col-lg-6 col-md-12 see-all">
-                                        <a href="" class="btn btn-primary btn-sm">See All News</a>
+                                        <a href="{{ route('category',$item->id) }}" class="btn btn-primary btn-sm">See All News</a>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="bar"></div>

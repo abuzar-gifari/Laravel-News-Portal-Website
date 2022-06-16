@@ -201,10 +201,10 @@
                 <div class="left">
 
                     
-                    @foreach ($sub_category_data as $item)
+                    @foreach ($sub_category_data as $single_sub_category)
                         
                             <!-- If There Has No Post Found Under SubCategory -->
-                            @if (count($item->rPost) == 0)
+                            @if (count($single_sub_category->rPost) == 0)
                                 @continue
                             @endif
 
@@ -212,10 +212,10 @@
                             <div class="news-total-item">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12">
-                                        <h2>{{ $item->sub_category_name }}</h2>
+                                        <h2>{{ $single_sub_category->sub_category_name }}</h2>
                                     </div>
                                     <div class="col-lg-6 col-md-12 see-all">
-                                        <a href="{{ route('category',$item->id) }}" class="btn btn-primary btn-sm">See All News</a>
+                                        <a href="{{ route('category',$single_sub_category->id) }}" class="btn btn-primary btn-sm">See All News</a>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="bar"></div>
@@ -227,7 +227,7 @@
                                 <div class="row">
 
 
-                                    @foreach ($item->rPost as $single_news)
+                                    @foreach ($single_sub_category->rPost as $single_news)
                                         @if ($loop->iteration == 2)
                                             @break
                                         @endif
@@ -239,7 +239,7 @@
                                                         <img src="{{ asset('uploads/'.$single_news->post_photo) }}" alt="">
                                                     </div>
                                                     <div class="category">
-                                                        <span class="badge bg-success">{{ $item->sub_category_name }}</span>
+                                                        <span class="badge bg-success">{{ $single_sub_category->sub_category_name }}</span>
                                                     </div>
                                                     <h3><a href="{{ route('news_detail',$single_news->id) }}">{{ $single_news->post_title }}</a></h3>
                                                     <div class="date-user">
@@ -277,7 +277,7 @@
                                     <div class="col-lg-6 col-md-12">
                                         <div class="right-side">
 
-                                            @foreach ($item->rPost as $single_news)
+                                            @foreach ($single_sub_category->rPost as $single_news)
 
                                                 @if ($loop->iteration == 1)
                                                     @continue
@@ -292,7 +292,7 @@
                                                     </div>
                                                     <div class="right">
                                                         <div class="category">
-                                                            <span class="badge bg-success">{{ $item->sub_category_name }}</span>
+                                                            <span class="badge bg-success">{{ $single_sub_category->sub_category_name }}</span>
                                                         </div>
                                                         <h2><a href="{{ route('news_detail',$single_news->id) }}">{{ $single_news->post_title }}</a></h2>
                                                         <div class="date-user">

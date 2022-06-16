@@ -56,7 +56,7 @@
                     <h2>Tags</h2>
                     <div class="tag-section-content">
                         @foreach ($tag_data as $tag)
-                            <a href=""><span class="badge bg-success">{{ $tag->tag_name }}</span></a>
+                            <a href="javascript:void;"><span class="badge bg-success">{{ $tag->tag_name }}</span></a>
                         @endforeach
                     </div>
                 </div>

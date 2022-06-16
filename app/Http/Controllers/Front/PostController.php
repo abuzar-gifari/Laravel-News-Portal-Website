@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    // news/post id comes
     public function detail($id){
 
         $post_detail = Post::with('rSubCategory')->where('id',$id)->first();

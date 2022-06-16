@@ -19,21 +19,24 @@ use App\Http\Controllers\Front\SubCategoryController;
 use App\Http\Controllers\Front\VideoController;
 use Illuminate\Support\Facades\Route;
 
-/*Frontend Routes*/
+/* Frontend Routes */
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[AboutController::class,'index'])->name('about');
 Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_gallery');
 Route::get('/video-gallery',[VideoController::class,'index'])->name('video_gallery');
-Route::get('/post-detail/{id}',[PostController::class,'detail'])->name('news_detail');
+Route::get('/news-detail/{id}',[PostController::class,'detail'])->name('news_detail');
 Route::get('/category/{id}',[SubCategoryController::class,'index'])->name('category');
 
 
 
-/*Admin Panel Routes*/
+/* Admin Panel Routes */
 
 // view dashboard page
 Route::get('/admin/home',[AdminHomeController::class,'index'])->name('admin_home')->middleware('admin:admin');// middleware name: guard name
+
+
+/* Authentication Routes */
 
 // admin login page show
 Route::get('/admin/login',[AdminLoginController::class,'index'])->name('admin_login');

@@ -34,7 +34,7 @@
                                 @endif
                                 <form method="POST" action="{{ route('admin_login_submit') }}">@csrf
                                     <div class="form-group">
-                                        <input type="text" 
+                                        <input type="text"
                                         class="form-control
                                         {{-- for border color red --}}
                                         @error('email')
@@ -84,6 +84,8 @@
                                             </a>
                                         </div>
                                     </div>
+                                    <span> <b>Email:</b> shaikh35-3024@diu.edu.bd </span>
+                                    <span> <b>Password:</b> 12345 </span>
                                 </form>
                             </div>
                         </div>

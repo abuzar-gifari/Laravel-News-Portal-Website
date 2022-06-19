@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminAdvertisementController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -12,10 +13,12 @@ use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Front\AboutController;
+use App\Http\Controllers\Front\FAQController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\SubCategoryController;
+use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +26,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[AboutController::class,'index'])->name('about');
+Route::get('/terms-and-conditions',[TermsController::class,'index'])->name('terms');
+Route::get('/faq',[FAQController::class,'index'])->name('faq');
 Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_gallery');
 Route::get('/video-gallery',[VideoController::class,'index'])->name('video_gallery');
 Route::get('/news-detail/{id}',[PostController::class,'detail'])->name('news_detail');
@@ -210,3 +215,27 @@ Route::post('/admin/video/update/{id}',[AdminVideoController::class,'update'])->
 
 // Video Data Delete
 Route::get('/admin/video/delete/{id}',[AdminVideoController::class,'delete'])->name('admin_video_delete');
+
+
+/* About Page Routes */
+// about page show
+Route::get('/admin/page/about',[AdminPageController::class,'about'])->name('admin_page_about')->middleware('admin:admin');
+
+// about page Update
+Route::post('/admin/page/about/update',[AdminPageController::class,'about_update'])->name('admin_page_about_update');
+
+
+/* FAQ Page Routes */
+// FAQ page show
+Route::get('/admin/page/faq',[AdminPageController::class,'faq'])->name('admin_page_faq')->middleware('admin:admin');
+
+// FAQ page Update
+Route::post('/admin/page/faq/update',[AdminPageController::class,'faq_update'])->name('admin_page_faq_update');
+
+
+/* Terms and Conditions Page Routes */
+// FAQ page show
+Route::get('/admin/page/terms',[AdminPageController::class,'terms'])->name('admin_page_terms')->middleware('admin:admin');
+
+// FAQ page Update
+Route::post('/admin/page/terms/update',[AdminPageController::class,'terms_update'])->name('admin_page_terms_update');

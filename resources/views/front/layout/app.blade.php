@@ -47,8 +47,10 @@
                             @if ($global_page_data->about_status=="Show")
                                 <li class="menu"><a href="{{ route('about') }}">About</a></li>
                             @endif
-                            <li class="menu"><a href="contact.html">Contact</a></li>
-                            <li class="menu"><a href="login.html">Login</a></li>
+                                <li class="menu"><a href="contact.html">Contact</a></li>
+                            @if ($global_page_data->login_status=="Show")
+                                <li class="menu"><a href="{{ route('login') }}">Login</a></li>
+                            @endif
                             <li>
                                 <div class="language-switch">
                                     <select name="">

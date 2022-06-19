@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\FAQController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\SubCategoryController;
@@ -28,6 +29,7 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[AboutController::class,'index'])->name('about');
 Route::get('/terms-and-conditions',[TermsController::class,'index'])->name('terms');
 Route::get('/faq',[FAQController::class,'index'])->name('faq');
+Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_gallery');
 Route::get('/video-gallery',[VideoController::class,'index'])->name('video_gallery');
 Route::get('/news-detail/{id}',[PostController::class,'detail'])->name('news_detail');
@@ -239,3 +241,11 @@ Route::get('/admin/page/terms',[AdminPageController::class,'terms'])->name('admi
 
 // FAQ page Update
 Route::post('/admin/page/terms/update',[AdminPageController::class,'terms_update'])->name('admin_page_terms_update');
+
+
+/* Frontend Login Routes */
+// Login page show
+Route::get('/admin/page/login',[AdminPageController::class,'login'])->name('admin_page_login')->middleware('admin:admin');
+
+// Login page Update
+Route::post('/admin/page/login/update',[AdminPageController::class,'login_update'])->name('admin_page_login_update');

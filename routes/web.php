@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Admin\AdminAdvertisementController;
 use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminFAQController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminPageController;
@@ -260,3 +261,25 @@ Route::get('/admin/page/contact',[AdminPageController::class,'contact'])->name('
 
 // Contact page Update
 Route::post('/admin/page/contact/update',[AdminPageController::class,'contact_update'])->name('admin_page_contact_update');
+
+
+
+/* FAQ Routes */
+
+// Show Video Page
+Route::get('/admin/faq/show',[AdminFAQController::class,'show'])->name('admin_faq_show')->middleware('admin:admin');
+
+// Create Video Page
+Route::get('/admin/faq/create',[AdminFAQController::class,'create'])->name('admin_faq_create')->middleware('admin:admin');
+
+// Video Submit/Store
+Route::post('/admin/faq/store',[AdminFAQController::class,'store'])->name('admin_faq_store');
+
+// Video Edit Page Show
+Route::get('/admin/faq/edit/{id}',[AdminFAQController::class,'edit'])->name('admin_faq_edit')->middleware('admin:admin');
+
+// Video Update
+Route::post('/admin/faq/update/{id}',[AdminFAQController::class,'update'])->name('admin_faq_update');
+
+// Video Data Delete
+Route::get('/admin/faq/delete/{id}',[AdminFAQController::class,'delete'])->name('admin_faq_delete');

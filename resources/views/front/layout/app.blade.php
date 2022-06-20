@@ -47,7 +47,9 @@
                             @if ($global_page_data->about_status=="Show")
                                 <li class="menu"><a href="{{ route('about') }}">About</a></li>
                             @endif
-                                <li class="menu"><a href="contact.html">Contact</a></li>
+                            @if ($global_page_data->contact_status=="Show")
+                                <li class="menu"><a href="{{ route('contact') }}">Contact</a></li>
+                            @endif
                             @if ($global_page_data->login_status=="Show")
                                 <li class="menu"><a href="{{ route('login') }}">Login</a></li>
                             @endif

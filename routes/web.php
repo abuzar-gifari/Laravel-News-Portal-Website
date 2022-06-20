@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Front\AboutController;
+use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FAQController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\LoginController;
@@ -27,6 +28,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[AboutController::class,'index'])->name('about');
+Route::get('/contact',[ContactController::class,'contact'])->name('contact');
+Route::post('/contact/send-email',[ContactController::class,'send_email'])->name('contact_form_submit');
 Route::get('/terms-and-conditions',[TermsController::class,'index'])->name('terms');
 Route::get('/faq',[FAQController::class,'index'])->name('faq');
 Route::get('/login',[LoginController::class,'index'])->name('login');
@@ -249,3 +252,11 @@ Route::get('/admin/page/login',[AdminPageController::class,'login'])->name('admi
 
 // Login page Update
 Route::post('/admin/page/login/update',[AdminPageController::class,'login_update'])->name('admin_page_login_update');
+
+
+/* Contact Page Routes */
+// Contact page show
+Route::get('/admin/page/contact',[AdminPageController::class,'contact'])->name('admin_page_contact')->middleware('admin:admin');
+
+// Contact page Update
+Route::post('/admin/page/contact/update',[AdminPageController::class,'contact_update'])->name('admin_page_contact_update');

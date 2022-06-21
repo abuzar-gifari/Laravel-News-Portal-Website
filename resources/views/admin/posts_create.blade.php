@@ -48,6 +48,13 @@
                             <label>Tags</label>
                             <input type="text" class="form-control" name="tags">
                         </div>
+                        <div class="form-group mb-3">
+                            <label>Want to send this to subscribers?</label>
+                            <select name="subscriber_send_option" class="form-control">
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>

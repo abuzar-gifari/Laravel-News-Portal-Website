@@ -21,6 +21,7 @@ use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\SubCategoryController;
+use App\Http\Controllers\Front\SubscriberController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,8 @@ Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_galle
 Route::get('/video-gallery',[VideoController::class,'index'])->name('video_gallery');
 Route::get('/news-detail/{id}',[PostController::class,'detail'])->name('news_detail');
 Route::get('/category/{id}',[SubCategoryController::class,'index'])->name('category');
+Route::post('/subscriber',[SubscriberController::class,'index'])->name('subscribe');
+Route::get('/subscriber/verify/{token}/{email}',[SubscriberController::class,'verify'])->name('subscriber_verify');
 
 
 

@@ -165,15 +165,18 @@
                         </div>
                     </div>
 
+                    <!-- News Letter Section -->
                     <div class="col-md-3">
                         <div class="item">
                             <h2 class="heading">Newsletter</h2>
                             <p>
                                 In order to get the latest news and other great items, please subscribe us here: 
                             </p>
-                            <form action="" method="post">
+                            <form action="{{ route('subscribe') }}" method="post" class="form_subscribe_ajax">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="text" name="" class="form-control">
+                                    <input type="email" name="email" placeholder="Enter Your Email" class="form-control">
+                                    <span class="text-danger error-text email_error"></span>
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-primary" value="Subscribe Now">
@@ -181,7 +184,8 @@
                             </form>
                         </div>
                     </div>
-
+                    <!--// News Letter Section -->
+                
                 </div>
             </div>
         </div>
@@ -194,7 +198,58 @@
             <i class="fas fa-angle-up"></i>
         </div>
 		
-        @include('front.layout.scripts_footer')     
+        @include('front.layout.scripts_footer')   
+        
+        
+        <!-- Send Email by Ajax Request -->
+        <script>
+            (function($){
+                $("form_subscribe_ajax").on('submit',function(e){
+                    e.preventDefault();
+                    $("#loader").show();
+                    var form = this;
+                    $.ajax({
+                        url:$(form).attr('action'),
+                        method:$(form).attr('method'),
+                        data: new FormData(form),
+                        processData:false,
+                        dataType:'json',
+                        contentType:false,
+                        beforeSend:function(){
+                            $(form).find('span.error-text').text('');
+                        },
+                        success:function(data)
+                        {
+                            $('#loader').hide();
+                            if (data.code == 0) {
+                                $.each(data.error_message,function(prefix,val){
+                                    $(form).find('span.'+prefix+'_error').text(val[0]);
+                                });
+                            }
+                            else if (data.code == 1) {
+                                $(form)[0].reset();
+                                iziToast.success({
+                                    title:'',
+                                    position:'topRight',
+                                    message:data.success_message,
+                                });
+                            }
+                        }
+                    })
+                })
+            })(jQuery);
+        </script>
+        <div id="loader"></div>
+
+        @if (session()->get('success_message'))
+            <script>
+                iziToast.success({
+                    title: '',
+                    position: 'topRight',
+                    message: '{{ session()->get('success_message') }}',
+                });
+            </script>
+        @endif
 		
    </body>
 </html>

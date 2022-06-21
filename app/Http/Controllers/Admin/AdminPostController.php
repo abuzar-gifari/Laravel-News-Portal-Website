@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Post;
-use App\Models\SubCategory;
 use App\Models\Tag;
+use App\Models\Post;
+use App\Mail\Websitemail;
+use App\Models\Subscriber;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AdminPostController extends Controller
 {
@@ -85,6 +88,26 @@ class AdminPostController extends Controller
                 $tag->tag_name = $tags_array_new[$i];
                 $tag->save();
             }    
+        }
+
+
+        /* sending this post to subscribers */
+        if ($request->subscriber_send_option == 1) {
+            
+            $subject = "A new post is published";
+            $message = 'Hi, A new post is published into our website. Please go to see that post <br>';
+            $message .= '<a target="_blank" href="'.route('news_detail',$auto_increment_id).'">';
+            $message .= $request->post_title;
+            $message .= '</a>';
+
+            // get ALL the active subscribers
+            $subscribers = Subscriber::where('status','Active')->get();
+
+            foreach($subscribers as $row){
+            
+                Mail::to($row->email)->send(new Websitemail($subject,$message));
+            
+            }
         }
         
 

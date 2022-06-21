@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
+use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\ContactController;
@@ -286,3 +287,11 @@ Route::post('/admin/faq/update/{id}',[AdminFAQController::class,'update'])->name
 
 // Video Data Delete
 Route::get('/admin/faq/delete/{id}',[AdminFAQController::class,'delete'])->name('admin_faq_delete');
+
+
+/* subscriber */
+Route::get('/admin/subscriber/all',[AdminSubscriberController::class,'show_all'])->name('admin_subscriber')->middleware('admin:admin');
+
+Route::get('/admin/subscriber/send-email',[AdminSubscriberController::class,'send_email'])->name('admin_subscriber_send_email')->middleware('admin:admin');
+
+Route::post('/admin/subscriber/send-email-submit',[AdminSubscriberController::class,'send_email_submit'])->name('admin_subscriber_send_email_submit');

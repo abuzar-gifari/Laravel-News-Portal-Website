@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminFAQController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLiveChannelController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminOnlinePollController;
 use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminPostController;
@@ -21,12 +22,14 @@ use App\Http\Controllers\Front\FAQController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\PhotoController;
+use App\Http\Controllers\Front\PollController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\SubCategoryController;
 use App\Http\Controllers\Front\SubscriberController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
 use Illuminate\Support\Facades\Route;
+
 
 /* Frontend Routes */
 
@@ -43,6 +46,8 @@ Route::get('/news-detail/{id}',[PostController::class,'detail'])->name('news_det
 Route::get('/category/{id}',[SubCategoryController::class,'index'])->name('category');
 Route::post('/subscriber',[SubscriberController::class,'index'])->name('subscribe');
 Route::get('/subscriber/verify/{token}/{email}',[SubscriberController::class,'verify'])->name('subscriber_verify');
+Route::post('/poll/submit',[PollController::class,'submit'])->name('poll_submit');
+Route::get('/poll/previous',[PollController::class,'previous_poll_result'])->name('previous_poll');
 
 
 
@@ -318,3 +323,25 @@ Route::post('/admin/live-channel/update/{id}',[AdminLiveChannelController::class
 
 // Live Channel Data Delete
 Route::get('/admin/live-channel/delete/{id}',[AdminLiveChannelController::class,'delete'])->name('admin_live_channel_delete');
+
+
+
+/* Online Poll Routes */
+
+// Show Live Channel Page
+Route::get('/admin/online-poll/show',[AdminOnlinePollController::class,'show'])->name('admin_online_poll_show')->middleware('admin:admin');
+
+// Create Live Channel Page
+Route::get('/admin/online-poll/create',[AdminOnlinePollController::class,'create'])->name('admin_online_poll_create')->middleware('admin:admin');
+
+// Live Channel Submit/Store
+Route::post('/admin/online-poll/store',[AdminOnlinePollController::class,'store'])->name('admin_online_poll_store');
+
+// Live Channel Edit Page Show
+Route::get('/admin/online-poll/edit/{id}',[AdminOnlinePollController::class,'edit'])->name('admin_online_poll_edit')->middleware('admin:admin');
+
+// Live Channel Update
+Route::post('/admin/online-poll/update/{id}',[AdminOnlinePollController::class,'update'])->name('admin_online_poll_update');
+
+// Live Channel Data Delete
+Route::get('/admin/online-poll/delete/{id}',[AdminOnlinePollController::class,'delete'])->name('admin_online_poll_delete');

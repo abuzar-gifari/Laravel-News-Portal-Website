@@ -85,6 +85,9 @@
             <!-- Live Channel -->
             <li class="{{ Request::is('admin/live-channel/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_live_channel_show') }}"><i class="fas fa-hand-point-right"></i> <span>Live Channel</span></a></li>
 
+            <!-- Online Poll -->
+            <li class="{{ Request::is('admin/online-poll/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_online_poll_show') }}"><i class="fas fa-hand-point-right"></i> <span>Online Poll</span></a></li>
+
 
             {{-- <li class="nav-item dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Dropdown Items</span></a>

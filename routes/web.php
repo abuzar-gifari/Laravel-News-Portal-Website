@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminAdvertisementController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminFAQController;
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\AdminLiveChannelController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminPhotoController;
@@ -295,3 +296,25 @@ Route::get('/admin/subscriber/all',[AdminSubscriberController::class,'show_all']
 Route::get('/admin/subscriber/send-email',[AdminSubscriberController::class,'send_email'])->name('admin_subscriber_send_email')->middleware('admin:admin');
 
 Route::post('/admin/subscriber/send-email-submit',[AdminSubscriberController::class,'send_email_submit'])->name('admin_subscriber_send_email_submit');
+
+
+
+/* Live Channel Routes */
+
+// Show Live Channel Page
+Route::get('/admin/live-channel/show',[AdminLiveChannelController::class,'show'])->name('admin_live_channel_show')->middleware('admin:admin');
+
+// Create Live Channel Page
+Route::get('/admin/live-channel/create',[AdminLiveChannelController::class,'create'])->name('admin_live_channel_create')->middleware('admin:admin');
+
+// Live Channel Submit/Store
+Route::post('/admin/live-channel/store',[AdminLiveChannelController::class,'store'])->name('admin_live_channel_store');
+
+// Live Channel Edit Page Show
+Route::get('/admin/live-channel/edit/{id}',[AdminLiveChannelController::class,'edit'])->name('admin_live_channel_edit')->middleware('admin:admin');
+
+// Live Channel Update
+Route::post('/admin/live-channel/update/{id}',[AdminLiveChannelController::class,'update'])->name('admin_live_channel_update');
+
+// Live Channel Data Delete
+Route::get('/admin/live-channel/delete/{id}',[AdminLiveChannelController::class,'delete'])->name('admin_live_channel_delete');

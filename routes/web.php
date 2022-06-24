@@ -27,6 +27,7 @@ use App\Http\Controllers\Front\PollController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\SubCategoryController;
 use App\Http\Controllers\Front\SubscriberController;
+use App\Http\Controllers\Front\TagController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,7 @@ Route::post('/poll/submit',[PollController::class,'submit'])->name('poll_submit'
 Route::get('/poll/previous',[PollController::class,'previous_poll_result'])->name('previous_poll');
 Route::post('/archive/show',[ArchiveController::class,'show'])->name('archive_show');
 Route::get('/archive/{year}/{month}',[ArchiveController::class,'detail'])->name('archive_detail');
+Route::get('/tag/{tag_name}',[TagController::class,'show'])->name('tag_show');
 
 
 

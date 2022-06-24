@@ -11,44 +11,29 @@
             </div>
         </div>    
     @endforeach
+
+    <!-- Tag Portion -->
     
     <div class="widget">
         <div class="tag-heading">
             <h2>Tags</h2>
         </div>
         <div class="tag">
-            <div class="tag-item">
-                <a href=""><span class="badge bg-secondary">business</span></a>
-            </div>
-            <div class="tag-item">
-                <a href=""><span class="badge bg-secondary">river</span></a>
-            </div>
-            <div class="tag-item">
-                <a href=""><span class="badge bg-secondary">politics</span></a>
-            </div>
-            <div class="tag-item">
-                <a href=""><span class="badge bg-secondary">google</span></a>
-            </div>
-            <div class="tag-item">
-                <a href=""><span class="badge bg-secondary">tree</span></a>
-            </div>
-            <div class="tag-item">
-                <a href=""><span class="badge bg-secondary">airplane</span></a>
-            </div>
-            <div class="tag-item">
-                <a href=""><span class="badge bg-secondary">tiles</span></a>
-            </div>
-            <div class="tag-item">
-                <a href=""><span class="badge bg-secondary">recent</span></a>
-            </div>
-            <div class="tag-item">
-                <a href=""><span class="badge bg-secondary">brand</span></a>
-            </div>
-            <div class="tag-item">
-                <a href=""><span class="badge bg-secondary">election</span></a>
-            </div>
+
+            @php
+                $all_tags_data = \App\Models\Tag::select('tag_name')->distinct()->get();
+                // echo $all_tags_data;
+            @endphp
+            @foreach ($all_tags_data as $tag)
+                <div class="tag-item">
+                    <a href="{{ route('tag_show',$tag->tag_name) }}"><span class="badge bg-secondary">{{ $tag->tag_name }}</span></a>
+                </div>
+            @endforeach
+
         </div>
     </div>
+
+    <!--// Tag Portion  -->
 
 
     <!-- Archive Section -->

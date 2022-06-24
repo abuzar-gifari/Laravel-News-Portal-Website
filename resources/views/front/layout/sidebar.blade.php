@@ -49,24 +49,47 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Archive Section -->
+
     <div class="widget">
         <div class="archive-heading">
             <h2>Archive</h2>
         </div>
         <div class="archive">
-            <select name="" class="form-select">
-                <option value="">Select Month</option>
-                <option value="">February 2022</option>
-                <option value="">January 2022</option>
-                <option value="">December 2021</option>
-                <option value="">November 2021</option>
-                <option value="">October 2021</option>
-                <option value="">September 2021</option>
-                <option value="">August 2021</option>
-                <option value="">July 2021</option>
-            </select>
+
+            @php
+                $archive_array = [];
+                $all_post_data = \App\Models\Post::orderBy('id','desc')->get();
+                foreach ($all_post_data as $row) {
+                    $ts = strtotime($row->created_at);
+                    $month = date('m',$ts);
+                    $month_full = date('F',$ts);
+                    $year = date('Y',$ts);
+                    $archive_array[] = $month.'-'.$month_full.'-'.$year;
+                }
+                $archive_array = array_values(array_unique($archive_array));
+            @endphp
+
+            <form action="{{ route('archive_show') }}" method="post">@csrf
+                <select name="archive_month_year" class="form-select" onchange="this.form.submit()">
+                    <option value="">Select Month</option>
+                    @for ($i=0;$i<count($archive_array);$i++)
+                        @php
+                            $temp_array = explode('-',$archive_array[$i]);
+                        @endphp
+                        <option value="{{ $temp_array[0].'-'.$temp_array[2] }}">{{ $temp_array[1] }}, {{ $temp_array[2] }}</option>
+                    @endfor
+                </select>
+            </form>
         </div>
     </div>
+    
+    <!--// Archive Section -->
+
+
+
 
     <!-- Live Channel Section -->
 

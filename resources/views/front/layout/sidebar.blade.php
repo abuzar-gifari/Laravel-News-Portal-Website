@@ -49,12 +49,20 @@
                 $all_post_data = \App\Models\Post::orderBy('id','desc')->get();
                 foreach ($all_post_data as $row) {
                     $ts = strtotime($row->created_at);
-                    $month = date('m',$ts);
-                    $month_full = date('F',$ts);
-                    $year = date('Y',$ts);
+                    // echo $ts;
+                    // echo "<br>";
+                    $month = date('m',$ts); // 06
+                    $month_full = date('F',$ts); // June
+                    $year = date('Y',$ts); // 2022
+                    // echo $month.'-'.$month_full.'-'.$year;
+                    // echo "<br>";
                     $archive_array[] = $month.'-'.$month_full.'-'.$year;
                 }
+                // echo "<pre>";
+                //     print_r(array_values(array_unique($archive_array)));
+                // echo "</pre>";
                 $archive_array = array_values(array_unique($archive_array));
+                // echo count($archive_array);
             @endphp
 
             <form action="{{ route('archive_show') }}" method="post">@csrf
@@ -62,12 +70,16 @@
                     <option value="">Select Month</option>
                     @for ($i=0;$i<count($archive_array);$i++)
                         @php
+                            // The explode() function breaks a string into an array.
+                            // explode(separator,string,limit)
                             $temp_array = explode('-',$archive_array[$i]);
                         @endphp
                         <option value="{{ $temp_array[0].'-'.$temp_array[2] }}">{{ $temp_array[1] }}, {{ $temp_array[2] }}</option>
                     @endfor
                 </select>
             </form>
+
+
         </div>
     </div>
     

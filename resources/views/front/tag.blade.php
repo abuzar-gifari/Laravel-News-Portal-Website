@@ -30,7 +30,9 @@
                         @if (count($all_post))
                             @foreach ($all_post as $item)
 
-                                @if (!in_array($item->id,$tag_array))
+                                <!-- The in_array() function searches an array for a specific value. -->
+                                <!-- in_array(search_item, array) -->
+                                @if (!in_array($item->id,$post_ids_array))
                                     @continue
                                 @endif
                                 

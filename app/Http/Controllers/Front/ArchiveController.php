@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class ArchiveController extends Controller
 {
     public function show(Request $request){
-        //echo $request->archive_month_year;
+        // echo $request->archive_month_year;die; /* 06-2022 */
         $temp = explode('-',$request->archive_month_year);
-        $month = $temp[0];
-        $year = $temp[1];
+        $month = $temp[0]; // 06
+        $year = $temp[1]; // 2022
 
         return redirect()->route('archive_detail',[$year,$month]);
     }
@@ -22,7 +22,7 @@ class ArchiveController extends Controller
         $post_data_archive = Post::with('rSubCategory')->whereMonth('created_at','=',$month)->whereYear('created_at','=',$year)->paginate(6);
 
         foreach($post_data_archive as $item){
-            $ts = strtotime($item->updated_at);
+            $ts = strtotime($item->created_at);
             $updated_date = date('F, Y',$ts);
             break;
         }

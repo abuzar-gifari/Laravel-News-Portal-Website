@@ -14,6 +14,7 @@ class PostController extends Controller
     public function detail($id){
 
         $post_detail = Post::with('rSubCategory')->where('id',$id)->first();
+        // dd($post_detail->sub_category_id);
 
         // passing the tag data
         $tag_data = Tag::where('post_id',$id)->get();
@@ -33,6 +34,9 @@ class PostController extends Controller
         $post_detail->visitors = $total_views;
         $post_detail->update();
 
-        return view('front.post_detail',compact('post_detail','user_data','tag_data'));
+        // related posts are passing
+        $related_post_array = Post::orderBy('id','desc')->where('sub_category_id',$post_detail->sub_category_id)->get();
+
+        return view('front.post_detail',compact('post_detail','user_data','tag_data','related_post_array'));
     }
 }

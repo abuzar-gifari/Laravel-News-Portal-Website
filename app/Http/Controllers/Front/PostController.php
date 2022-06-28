@@ -35,7 +35,7 @@ class PostController extends Controller
         $post_detail->update();
 
         // related posts are passing
-        $related_post_array = Post::orderBy('id','desc')->where('sub_category_id',$post_detail->sub_category_id)->get();
+        $related_post_array = Post::with('rSubCategory')->orderBy('id','desc')->where('sub_category_id',$post_detail->sub_category_id)->get();
 
         return view('front.post_detail',compact('post_detail','user_data','tag_data','related_post_array'));
     }

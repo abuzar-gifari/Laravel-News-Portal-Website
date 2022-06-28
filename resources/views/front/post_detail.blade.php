@@ -95,7 +95,7 @@
                                     <img src="{{ asset('uploads/'.$item->post_photo) }}" alt="">
                                 </div>
                                 <div class="category">
-                                    <span class="badge bg-success">International</span>
+                                    <span class="badge bg-success">{{ $item->rSubCategory->sub_category_name }}</span>
                                 </div>
                                 <h3><a href="{{ route('news_detail',$item->id) }}">{{ $item->post_title }}</a></h3>
                                 <div class="date-user">

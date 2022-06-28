@@ -5,12 +5,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>All posts of {{ $updated_date }}</h2>
+                <h2>Search Result</h2>
                 <nav class="breadcrumb-container">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item">Archive</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $updated_date }}</li>
+                        <li class="breadcrumb-item">Search Result</a></li>
                     </ol>
                 </nav>
             </div>
@@ -21,14 +20,14 @@
 <div class="page-content">
     <div class="container">
         <div class="row">
+
             <div class="col-lg-8 col-md-6">
                 <div class="category-page">
                     <div class="row">
 
 
-                        <!-- 2nd Try -->
-                        @if (count($post_data_archive))
-                            @foreach ($post_data_archive as $item)
+                        @if (count($post_data))
+                            @foreach ($post_data as $item)
                                 
                                 <div class="col-lg-6 col-md-12">
                                     <div class="category-page-post-item">
@@ -68,12 +67,8 @@
                             <span class="text-danger">No Post is found!</span>
                         @endif
 
-                        <div class="col-md-12">
-                            {{ $post_data_archive->links() }}
-                        </div>
                         
 
-                        <!-- //2nd Try -->
                     </div>
                 </div>
 

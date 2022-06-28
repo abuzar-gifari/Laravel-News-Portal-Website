@@ -36,6 +36,8 @@ use Illuminate\Support\Facades\Route;
 /* Frontend Routes */
 
 Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/subcategory-by-category/{id}',[HomeController::class,'get_subcategory_by_category'])->name('subcategory-by-category');
+Route::post('/search/result',[HomeController::class,'search'])->name('search_result');
 Route::get('/about',[AboutController::class,'index'])->name('about');
 Route::get('/contact',[ContactController::class,'contact'])->name('contact');
 Route::post('/contact/send-email',[ContactController::class,'send_email'])->name('contact_form_submit');

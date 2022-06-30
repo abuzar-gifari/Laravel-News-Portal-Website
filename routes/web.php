@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Author\AuthorHomeController;
+use App\Http\Controllers\Author\AuthorProfileController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\ArchiveController;
 use App\Http\Controllers\Front\ContactController;
@@ -37,7 +38,13 @@ use Illuminate\Support\Facades\Route;
 
 /* Author Routes */
 
-Route::get('/author/home',[AuthorHomeController::class,'index'])->name('author_home');
+Route::get('/author/home',[AuthorHomeController::class,'index'])->name('author_home')->middleware('author:author');
+
+Route::get('/author/edit-profile',[AuthorProfileController::class,'author_edit_profile'])->name('author_edit_profile')->middleware('author:author');
+
+Route::post('/author/edit-profile-submit',[AuthorProfileController::class,'author_edit_profile_submit'])->name('author_edit_profile_submit')->middleware('author:author');
+
+
 
 
 /* Frontend Routes */

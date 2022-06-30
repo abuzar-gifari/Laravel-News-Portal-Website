@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminVideoController;
+use App\Http\Controllers\Author\AuthorHomeController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\ArchiveController;
 use App\Http\Controllers\Front\ContactController;
@@ -32,6 +33,11 @@ use App\Http\Controllers\Front\TagController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
 use Illuminate\Support\Facades\Route;
+
+
+/* Author Routes */
+
+Route::get('/author/home',[AuthorHomeController::class,'index'])->name('author_home');
 
 
 /* Frontend Routes */
@@ -53,8 +59,19 @@ Route::get('/terms-and-conditions',[TermsController::class,'index'])->name('term
 // faq page show
 Route::get('/faq',[FAQController::class,'index'])->name('faq');
 
-// login show
+
+/* Login Route for frontend */
+
+
 Route::get('/login',[LoginController::class,'index'])->name('login');
+
+Route::post('/login-submit',[LoginController::class,'login_submit'])->name('login_submit');
+
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+
+
+
+
 
 // photo and video gallery page show
 Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_gallery');

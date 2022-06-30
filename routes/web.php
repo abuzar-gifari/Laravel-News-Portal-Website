@@ -2,6 +2,7 @@
 //() {} []
 
 use App\Http\Controllers\Admin\AdminAdvertisementController;
+use App\Http\Controllers\Admin\AdminAuthorController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminFAQController;
 use App\Http\Controllers\Admin\AdminHomeController;
@@ -35,30 +36,62 @@ use Illuminate\Support\Facades\Route;
 
 /* Frontend Routes */
 
+
+// home page
 Route::get('/',[HomeController::class,'index'])->name('home');
-Route::get('/subcategory-by-category/{id}',[HomeController::class,'get_subcategory_by_category'])->name('subcategory-by-category');
-Route::post('/search/result',[HomeController::class,'search'])->name('search_result');
+
+// about page show
 Route::get('/about',[AboutController::class,'index'])->name('about');
+
+// contact route
 Route::get('/contact',[ContactController::class,'contact'])->name('contact');
 Route::post('/contact/send-email',[ContactController::class,'send_email'])->name('contact_form_submit');
+
+// terms and condition page show
 Route::get('/terms-and-conditions',[TermsController::class,'index'])->name('terms');
+
+// faq page show
 Route::get('/faq',[FAQController::class,'index'])->name('faq');
+
+// login show
 Route::get('/login',[LoginController::class,'index'])->name('login');
+
+// photo and video gallery page show
 Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_gallery');
 Route::get('/video-gallery',[VideoController::class,'index'])->name('video_gallery');
+
+// news detail page show
 Route::get('/news-detail/{id}',[PostController::class,'detail'])->name('news_detail');
+
+// sub-category page show
 Route::get('/category/{id}',[SubCategoryController::class,'index'])->name('category');
+
+// subscriber route
 Route::post('/subscriber',[SubscriberController::class,'index'])->name('subscribe');
 Route::get('/subscriber/verify/{token}/{email}',[SubscriberController::class,'verify'])->name('subscriber_verify');
+
+// poll route
 Route::post('/poll/submit',[PollController::class,'submit'])->name('poll_submit');
 Route::get('/poll/previous',[PollController::class,'previous_poll_result'])->name('previous_poll');
+
+// archive route
 Route::post('/archive/show',[ArchiveController::class,'show'])->name('archive_show');
 Route::get('/archive/{year}/{month}',[ArchiveController::class,'detail'])->name('archive_detail');
+
+// search result route
+Route::get('/subcategory-by-category/{id}',[HomeController::class,'get_subcategory_by_category'])->name('subcategory-by-category');
+Route::post('/search/result',[HomeController::class,'search'])->name('search_result');
+
+// tag route
 Route::get('/tag/{tag_name}',[TagController::class,'show'])->name('tag_show');
 
 
 
+
+
 /* Admin Panel Routes */
+
+
 
 // view dashboard page
 Route::get('/admin/home',[AdminHomeController::class,'index'])->name('admin_home')->middleware('admin:admin');// middleware name: guard name
@@ -200,22 +233,22 @@ Route::post('/admin/setting-update',[AdminSettingController::class,'update'])->n
 
 /* Photo Routes */
 
-// Show Sub Category Page
+// Show Photo Page
 Route::get('/admin/photo/show',[AdminPhotoController::class,'show'])->name('admin_photo_show')->middleware('admin:admin');
 
-// Create Sub Category Page
+// Create Photo Page
 Route::get('/admin/photo/create',[AdminPhotoController::class,'create'])->name('admin_photo_create')->middleware('admin:admin');
 
-// Sub Category Submit/Store
+// Photo Submit/Store
 Route::post('/admin/photo/store',[AdminPhotoController::class,'store'])->name('admin_photo_store');
 
-// Sub Category Edit Page Show
+// Photo Edit Page Show
 Route::get('/admin/photo/edit/{id}',[AdminPhotoController::class,'edit'])->name('admin_photo_edit')->middleware('admin:admin');
 
-// Sub Category Update
+// Photo Update
 Route::post('/admin/photo/update/{id}',[AdminPhotoController::class,'update'])->name('admin_photo_update');
 
-// Sub Category Data Delete
+// Photo Data Delete
 Route::get('/admin/photo/delete/{id}',[AdminPhotoController::class,'delete'])->name('admin_photo_delete');
 
 
@@ -257,10 +290,10 @@ Route::post('/admin/page/faq/update',[AdminPageController::class,'faq_update'])-
 
 
 /* Terms and Conditions Page Routes */
-// FAQ page show
+// Terms and Conditions page show
 Route::get('/admin/page/terms',[AdminPageController::class,'terms'])->name('admin_page_terms')->middleware('admin:admin');
 
-// FAQ page Update
+// Terms and Conditions page Update
 Route::post('/admin/page/terms/update',[AdminPageController::class,'terms_update'])->name('admin_page_terms_update');
 
 
@@ -283,22 +316,22 @@ Route::post('/admin/page/contact/update',[AdminPageController::class,'contact_up
 
 /* FAQ Routes */
 
-// Show Video Page
+// Show FAQ Page
 Route::get('/admin/faq/show',[AdminFAQController::class,'show'])->name('admin_faq_show')->middleware('admin:admin');
 
-// Create Video Page
+// Create FAQ Page
 Route::get('/admin/faq/create',[AdminFAQController::class,'create'])->name('admin_faq_create')->middleware('admin:admin');
 
-// Video Submit/Store
+// FAQ Submit/Store
 Route::post('/admin/faq/store',[AdminFAQController::class,'store'])->name('admin_faq_store');
 
-// Video Edit Page Show
+// FAQ Edit Page Show
 Route::get('/admin/faq/edit/{id}',[AdminFAQController::class,'edit'])->name('admin_faq_edit')->middleware('admin:admin');
 
-// Video Update
+// FAQ Update
 Route::post('/admin/faq/update/{id}',[AdminFAQController::class,'update'])->name('admin_faq_update');
 
-// Video Data Delete
+// FAQ Data Delete
 Route::get('/admin/faq/delete/{id}',[AdminFAQController::class,'delete'])->name('admin_faq_delete');
 
 
@@ -335,20 +368,42 @@ Route::get('/admin/live-channel/delete/{id}',[AdminLiveChannelController::class,
 
 /* Online Poll Routes */
 
-// Show Live Channel Page
+// Show Online Poll Page
 Route::get('/admin/online-poll/show',[AdminOnlinePollController::class,'show'])->name('admin_online_poll_show')->middleware('admin:admin');
 
-// Create Live Channel Page
+// Create Online Poll Page
 Route::get('/admin/online-poll/create',[AdminOnlinePollController::class,'create'])->name('admin_online_poll_create')->middleware('admin:admin');
 
-// Live Channel Submit/Store
+// Online Poll Submit/Store
 Route::post('/admin/online-poll/store',[AdminOnlinePollController::class,'store'])->name('admin_online_poll_store');
 
-// Live Channel Edit Page Show
+// Online Poll Edit Page Show
 Route::get('/admin/online-poll/edit/{id}',[AdminOnlinePollController::class,'edit'])->name('admin_online_poll_edit')->middleware('admin:admin');
 
-// Live Channel Update
+// Online Poll Update
 Route::post('/admin/online-poll/update/{id}',[AdminOnlinePollController::class,'update'])->name('admin_online_poll_update');
 
-// Live Channel Data Delete
+// Online Poll Data Delete
 Route::get('/admin/online-poll/delete/{id}',[AdminOnlinePollController::class,'delete'])->name('admin_online_poll_delete');
+
+
+
+/* Author Routes */
+
+// Show author Page
+Route::get('/admin/author/show',[AdminAuthorController::class,'show'])->name('admin_author_show')->middleware('admin:admin');
+
+// Create author Page
+Route::get('/admin/author/create',[AdminAuthorController::class,'create'])->name('admin_author_create')->middleware('admin:admin');
+
+// author Submit/Store
+Route::post('/admin/author/store',[AdminAuthorController::class,'store'])->name('admin_author_store');
+
+// author Edit Page Show
+Route::get('/admin/author/edit/{id}',[AdminAuthorController::class,'edit'])->name('admin_author_edit')->middleware('admin:admin');
+
+// author Update
+Route::post('/admin/author/update/{id}',[AdminAuthorController::class,'update'])->name('admin_author_update');
+
+// author Data Delete
+Route::get('/admin/author/delete/{id}',[AdminAuthorController::class,'delete'])->name('admin_author_delete');

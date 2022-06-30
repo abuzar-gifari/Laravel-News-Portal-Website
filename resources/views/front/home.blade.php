@@ -424,7 +424,7 @@
                 if (categoryId) {
                     $.ajax({
                         type:"get",
-                        url: "{{ url('/subcategory-by-category/') }}" + "/" + categoryId,
+                        url: "{{ url('/subcategory-by-category') }}" + "/" + categoryId,
                         success:function(response){
                             $("#sub_category").html(response.sub_category_data);
                         },

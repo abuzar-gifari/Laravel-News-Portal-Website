@@ -42,6 +42,7 @@ class HomeController extends Controller
     }
 
     public function search(Request $request){
+        // dd($request->all());
         $post_data = Post::with('rSubCategory')->orderBy('id','desc');
         if ($request->text_item != "") {
             $post_data = $post_data->where('post_title','like','%'.$request->text_item.'%');

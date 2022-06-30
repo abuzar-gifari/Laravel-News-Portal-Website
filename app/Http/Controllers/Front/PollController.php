@@ -22,7 +22,7 @@ class PollController extends Controller
         $poll_result->update();
 
         session()->put('current_poll_id',$poll_result->id);
-        // current poll id 2
+        // current poll id 4
 
         return redirect()->back()->with('success_message','Voted Successfully');
     }

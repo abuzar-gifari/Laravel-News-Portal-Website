@@ -31,13 +31,9 @@
                     <h1>@yield('heading')</h1>
                     <div class="ml-auto">
                         @yield('button')
-                        {{-- <a href="" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Button
-                        </a> --}}
                     </div>
                 </div>
 
-                {{-- Here Will Be Loaded All Blade Files --}}
                 @yield('content')
 
 
@@ -49,7 +45,8 @@
 {{-- Custom JS Files --}}
 @include('author.layout.scripts_footer')
 
-{{-- Because There Have Multiple Errors --}}
+
+<!-- for showing iziToast messages -->
 @if ($errors->any())
     @foreach ($errors->all() as $error)
         <script>
@@ -81,6 +78,9 @@
         });
     </script>
 @endif
+<!--// for showing iziToast messages -->
+
+
 
 </body>
 </html>

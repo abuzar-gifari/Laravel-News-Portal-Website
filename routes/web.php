@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Author\AuthorHomeController;
+use App\Http\Controllers\Author\AuthorPostController;
 use App\Http\Controllers\Author\AuthorProfileController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\ArchiveController;
@@ -45,6 +46,33 @@ Route::get('/author/edit-profile',[AuthorProfileController::class,'author_edit_p
 Route::post('/author/edit-profile-submit',[AuthorProfileController::class,'author_edit_profile_submit'])->name('author_edit_profile_submit')->middleware('author:author');
 
 
+// author post routes
+
+// Show Post Page
+Route::get('/author/post/show',[AuthorPostController::class,'show'])->name('author_post_show')->middleware('author:author');
+
+// Create Post Page
+Route::get('/author/post/create',[AuthorPostController::class,'create'])->name('author_post_create')->middleware('author:author');
+
+// Post Submit/Store
+Route::post('/author/post/store',[AuthorPostController::class,'store'])->name('author_post_store');
+
+// Post Edit Page Show
+Route::get('/author/post/edit/{id}',[AuthorPostController::class,'edit'])->name('author_post_edit')->middleware('author:author');
+
+// Post Update
+Route::post('/author/post-update/{id}',[AuthorPostController::class,'update'])->name('author_post_update');
+
+// Post Data Delete
+Route::get('/author/post-delete/{id}',[AuthorPostController::class,'delete'])->name('author_post_delete');
+
+// Tag Delete
+Route::get('/author/post/tag/delete/{id}/{post_id}',[AuthorPostController::class,'delete_tag'])->name('author_post_tag_delete')->middleware('author:author');
+
+
+
+
+
 
 
 /* Frontend Routes */
@@ -69,14 +97,13 @@ Route::get('/faq',[FAQController::class,'index'])->name('faq');
 
 /* Login Route for frontend */
 
-
 Route::get('/login',[LoginController::class,'index'])->name('login');
 
 Route::post('/login-submit',[LoginController::class,'login_submit'])->name('login_submit');
 
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
-
+/*// Login Route for frontend */
 
 
 

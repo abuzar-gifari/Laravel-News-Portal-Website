@@ -117,6 +117,12 @@ class AdminPostController extends Controller
     
     // post edit
     public function edit($id){
+        // check if it is admin or not
+        $if_its_admin = Post::where('id',$id)->where('admin_id',Auth::guard('admin')->user()->id)->count();
+        if (!$if_its_admin) {
+            return redirect()->route('admin_home');
+        }
+        
         $posts = Post::where('id',$id)->first();
         $existing_tags = Tag::where('post_id',$id)->get();
         $subcategories = SubCategory::with('rCategory')->get();

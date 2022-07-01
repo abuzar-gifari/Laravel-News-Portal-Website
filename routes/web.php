@@ -70,6 +70,25 @@ Route::get('/author/post-delete/{id}',[AuthorPostController::class,'delete'])->n
 Route::get('/author/post/tag/delete/{id}/{post_id}',[AuthorPostController::class,'delete_tag'])->name('author_post_tag_delete')->middleware('author:author');
 
 
+// author forget password page show
+Route::get('/forget-password',[LoginController::class,'forget_password'])->name('forget_password');
+
+// author forget password submit
+Route::post('/forget-password-submit',[LoginController::class,'forget_password_submit'])->name('forget_password_submit');
+
+// author reset password page show
+Route::get('/reset-password/{token}/{email}',[LoginController::class,'reset_password'])->name('reset_password');
+
+// author reset password submit
+Route::post('reset-password-submit',[LoginController::class,'reset_password_submit'])->name('reset_password_submit');
+
+
+
+
+/* ------------------------------------- AUTHOR ROUTES END HERE -------------------------------------- */
+
+
+
 
 
 

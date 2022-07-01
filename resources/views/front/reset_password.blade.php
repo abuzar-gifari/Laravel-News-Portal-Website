@@ -4,11 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>{{ $page_data->login_title }}</h2>
+                <h2>Reset Password</h2>
                 <nav class="breadcrumb-container">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $page_data->login_title }}</li>
+                        <li class="breadcrumb-item"><a href="">Reset Password</a></li>
                     </ol>
                 </nav>
             </div>
@@ -20,20 +20,23 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
-                    <form action="{{ route('login_submit') }}" method="post">
+                    <form action="{{ route('reset_password_submit') }}" method="post">
                         @csrf
+
+                        <input type="hidden" value="{{ $token }}" name="token">
+                        <input type="hidden" value="{{ $email }}" name="email">
+                        
                         <div class="login-form">
                             <div class="mb-3">
-                                <label for="" class="form-label">Email Address</label>
-                                <input type="text" class="form-control" name="email">
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Password</label>
+                                <label for="" class="form-label">New Password</label>
                                 <input type="password" class="form-control" name="password">
                             </div>
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary bg-website">Login</button>
-                                <a href="{{ route('forget_password') }}">Forget Password</a>
+                                <label for="" class="form-label">Retype Password</label>
+                                <input type="password" class="form-control" name="retype_password">
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary bg-website">Submit</button>
                             </div>
                         </div>
                     </form>

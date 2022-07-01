@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Author;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class PostController extends Controller
         else 
         {
             /* If Admin Doesn't exists */
+            $user_data = Author::where('id',$post_detail->author_id)->first();
         }
 
         // update page view count

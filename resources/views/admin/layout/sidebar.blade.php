@@ -12,17 +12,7 @@
             <li class="{{ Request::is('admin/home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
             <!-- Author Portion -->
-            <li class="nav-item dropdown 
-            {{ Request::is('admin/author/*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Author Section</span></a>
-                <ul class="dropdown-menu">
-
-                    <li class="{{ Request::is('admin/author/show') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_author_show') }}"><i class="fas fa-angle-right"></i>Author List</a></li>
-
-                    <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i>Author Posts</a></li> 
-
-                </ul>
-            </li>
+            <li class="{{ Request::is('admin/author/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_author_show') }}"><i class="fas fa-hand-point-right"></i> <span>Author List</span></a></li>
 
             <!-- Advertisement Menu Portion -->
             <li class="nav-item dropdown

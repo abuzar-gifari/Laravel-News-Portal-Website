@@ -150,7 +150,9 @@
                                                 $user_data = \App\Models\Admin::where('id',$item->admin_id)->first();
                                             @endphp
                                         @else
-                                            <!-- We Will Work Later -->
+                                            @php
+                                                $user_data = \App\Models\Author::where('id',$item->author_id)->first();
+                                            @endphp
                                         @endif
                                         <a href="javascript:void;">{{ $user_data->name }}</a>
                                     </div>
@@ -188,7 +190,16 @@
                                 <h2><a href="{{ route('news_detail',$item->id) }}">{{ $item->post_title }}</a></h2>
                                 <div class="date-user">
                                     <div class="user">
-                                        <a href="">Paul David</a>
+                                        @if ($item->author_id == 0)
+                                            @php
+                                                $user_data = \App\Models\Admin::where('id',$item->admin_id)->first();
+                                            @endphp
+                                        @else
+                                            @php
+                                                $user_data = \App\Models\Author::where('id',$item->author_id)->first();
+                                            @endphp
+                                        @endif
+                                        <a href="javascript:void;">{{ $user_data->name }}</a>
                                     </div>
                                     <div class="date">
                                         <a href="">10 Jan, 2022</a>

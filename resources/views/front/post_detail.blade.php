@@ -30,7 +30,7 @@
                 <div class="sub">
                     <div class="item">
                         <b><i class="fas fa-user"></i></b>
-                        <a href="">{{ $user_data->name }}</a>
+                        <a href="javascript:void;">{{ $user_data->name }}</a>
                     </div>
                     <div class="item">
                         <b><i class="fas fa-edit"></i></b>

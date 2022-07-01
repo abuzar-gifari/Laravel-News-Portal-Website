@@ -28,6 +28,8 @@
 @endif
 
 
+
+
 <!-- Featured Section Start -->
 
 <div class="home-main">
@@ -63,8 +65,11 @@
                                                 @endphp
                                             @else
                                                 <!-- Author Exists -->
+                                                @php
+                                                    $user_data = \App\Models\Author::where('id',$row->author_id)->first();
+                                                @endphp
                                             @endif
-                                            <a href="">{{ $user_data->name }}</a>
+                                            <a href="javascript:void">{{ $user_data->name }}</a>
                                         </div>
                                         <div class="date">
                                             @php
@@ -72,7 +77,7 @@
                                                 $updated_at = date('d F, Y',$ts);
                                             @endphp
                                             
-                                            <a href="">{{ $updated_at }}</a>
+                                            <a href="javascript:void">{{ $updated_at }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -110,9 +115,11 @@
                                                     $user_data = \App\Models\Admin::where('id',$row->admin_id)->first();
                                                 @endphp
                                             @else
-                                                <!-- We Will Work Later -->
+                                                @php
+                                                    $user_data = \App\Models\Author::where('id',$row->author_id)->first();
+                                                @endphp
                                             @endif
-                                            <a href="">{{ $user_data->name }}</a>
+                                            <a href="javascript:void">{{ $user_data->name }}</a>
                                         </div>
                                         <div class="date">
                                             @php
@@ -120,7 +127,7 @@
                                                 $updated_at = date('d F, Y',$ts);
                                             @endphp
                                             
-                                            <a href="">{{ $updated_at }}</a>
+                                            <a href="javascript:void">{{ $updated_at }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -157,6 +164,10 @@
         </div>
     </div>    
 @endif
+
+
+
+
 
 
 <!-- search section -->
@@ -197,6 +208,13 @@
     </div>
 </div>
 <!--// search section -->
+
+
+
+
+
+
+
 
 
 <div class="home-content">
@@ -255,6 +273,9 @@
                                                                 @endphp
                                                             @else
                                                                 <!-- We Will Work Later -->
+                                                                @php
+                                                                    $user_data = \App\Models\Author::where('id',$single_news->author_id)->first();
+                                                                @endphp
                                                             @endif
                                                             <a href="">{{ $user_data->name }}</a>
                                                         </div>
@@ -307,7 +328,9 @@
                                                                         $user_data = \App\Models\Admin::where('id',$single_news->admin_id)->first();
                                                                     @endphp
                                                                 @else
-                                                                    <!-- We Will Work Later -->
+                                                                    @php
+                                                                        $user_data = \App\Models\Author::where('id',$single_news->author_id)->first();
+                                                                    @endphp
                                                                 @endif
                                                                 <a href="">{{ $user_data->name }}</a>
                                                             </div>
@@ -343,6 +366,13 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
 
 <!-- Videos Part Start -->
 @if ($setting_data->video_status == "Show")
@@ -398,6 +428,7 @@
 
 
 
+
 @if ($data->above_footer_ad_status=="Show")
     <div class="ad-section-3">
         <div class="container">
@@ -413,6 +444,10 @@
         </div>
     </div>    
 @endif
+
+
+
+
 
 
 <!-- search result ajax code -->

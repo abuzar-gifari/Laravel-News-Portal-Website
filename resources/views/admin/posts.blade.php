@@ -37,7 +37,9 @@
                                             {{ $row->rSubCategory->rCategory->category_name }}
                                         </td>
                                         <td>
-                                            <!-- ToDo -->
+                                            @if ($row->author_id != 0)
+                                                {{ \App\Models\Author::where('id',$row->author_id)->first()->name }}
+                                            @endif
                                         </td>
                                         <td>
                                             <!-- ToDo -->

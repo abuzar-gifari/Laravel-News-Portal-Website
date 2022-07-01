@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('author.layout.app')
 @section('heading','Create Post')
 @section('content')
 <div class="section-body">

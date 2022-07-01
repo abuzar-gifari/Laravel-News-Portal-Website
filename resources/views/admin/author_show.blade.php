@@ -31,8 +31,7 @@
                                             {{ $row->email }}
                                         </td>
                                         <td class="pt_10 pb_10">
-                                            <a href="{{ route('admin_author_edit',$row->id) }}" class="btn btn-primary">Edit</a>
-                                            <a href="{{ route('admin_author_delete',$row->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete</a>
+                                            <a href="{{ route('admin_author_delete',$row->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete this Author</a>
                                         </td>
                                     </tr>
                                 @endforeach

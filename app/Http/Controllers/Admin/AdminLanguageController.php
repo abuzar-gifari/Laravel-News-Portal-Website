@@ -48,4 +48,53 @@ class AdminLanguageController extends Controller
 
         return redirect()->route('admin_language_show')->with('success_message','Data Created Successfully');
     }
+
+
+
+// language edit and delete
+
+    
+    // language edit
+    public function edit($id){
+        $language_data = Language::where('id',$id)->first();
+        return view('admin.language_edit',compact('language_data'));
+    }
+    
+    // language update
+    public function update(Request $request,$id){
+        $language = Language::where('id',$id)->first();
+        // validation
+        $request->validate([
+            'name' => 'required',
+            'short_name' => 'required',
+        ]);
+
+        if ($request->is_default == "Yes") {
+            DB::table('languages')->update([ 'is_default' => 'No' ]);
+        }
+
+        // send data to the database
+        $language->name = $request->name;
+        $language->short_name = $request->short_name;
+        $language->is_default = $request->is_default;
+        // update the table
+        $language->update();
+        return redirect()->route('admin_language_show')->with('success_message','Data Updated Successfully');
+    }
+
+    // Faq delete
+    public function delete($id){
+
+        $language = Language::where('id',$id)->first();
+
+        if ($language->is_default == "Yes") {
+            DB::table('languages')->where('id',1)->update([ 'is_default' => 'No' ]);
+        }
+
+        $language->delete();
+        return redirect()->route('admin_language_show')->with('success_message','Data is Deleted Successfully');
+    }
+
+
+
 }

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Language;
 use App\Models\LiveChannel;
 use App\Models\OnlinePoll;
 use App\Models\Page;
@@ -48,6 +49,10 @@ class AppServiceProvider extends ServiceProvider
         $popular_news_data = Post::with('rSubCategory')->orderBy('visitors','desc')->get();
 
         $online_poll_data = OnlinePoll::orderBy('id','desc')->first();
+
+        $language_data = Language::get();
+
+        $default_language_data = Language::where('is_default','Yes')->first();
         
         view()->share('global_top_ad_data',$top_ad_data);
         view()->share('global_sidebar_top_ad',$sidebar_top_ad);
@@ -58,5 +63,7 @@ class AppServiceProvider extends ServiceProvider
         view()->share('global_recent_news_data',$recent_news_data);
         view()->share('global_popular_news_data',$popular_news_data);
         view()->share('global_online_poll_data',$online_poll_data);
+        view()->share('global_language_data',$language_data);
+        view()->share('global_short_name',$default_language_data->short_name);
     }
 }

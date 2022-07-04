@@ -26,6 +26,7 @@ use App\Http\Controllers\Front\ArchiveController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FAQController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\LanguageController;
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\PollController;
@@ -126,6 +127,8 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 /*// Login Route for frontend */
 
 
+// language route for frontend
+Route::post('/language/switch',[LanguageController::class,'switch_language'])->name('front_language');
 
 // photo and video gallery page show
 Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_gallery');

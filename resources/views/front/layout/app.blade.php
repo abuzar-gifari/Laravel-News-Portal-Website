@@ -1,3 +1,15 @@
+@if (!session()->get('session_short_name'))
+    @php
+        $current_short_name = $global_short_name;
+    @endphp
+@else
+    @php
+        $current_short_name = session()->get('session_short_name');
+    @endphp
+@endif
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -55,11 +67,15 @@
                             @endif
                             <li>
                                 <div class="language-switch">
-                                    <select name="">
-                                        <option value="">English</option>
-                                        <option value="">Hindi</option>
-                                        <option value="">Arabic</option>
-                                    </select>
+                                    <form action="{{ route('front_language') }}" method="post">@csrf
+                                        <select name="short_name" onchange="this.form.submit()">
+                                            @foreach ($global_language_data as $item)
+                                                <option value="{{ $item->short_name }}" @if ($item->short_name == $current_short_name)
+                                                    selected
+                                                @endif>{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </form>
                                 </div>
                             </li>
                         </ul>

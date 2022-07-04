@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\helper\helper;
 use App\Http\Controllers\Controller;
 use App\Models\OnlinePoll;
 use Illuminate\Http\Request;
@@ -29,6 +30,9 @@ class PollController extends Controller
 
     public function previous_poll_result()
     {
+        
+        helper::read_json();
+
         $online_poll_data = OnlinePoll::orderBy('id','desc')->get();
         return view('front.poll_previous',compact('online_poll_data'));
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\helper\helper;
 use App\Models\Page;
 use App\Models\Author;
 use App\Mail\Websitemail;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Mail;
 class LoginController extends Controller
 {
     public function index(){
+        helper::read_json();
         $page_data = Page::where('id',1)->first();
         return view('front.login',compact('page_data'));
     }

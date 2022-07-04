@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\helper\helper;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -9,6 +10,9 @@ use Illuminate\Http\Request;
 class ArchiveController extends Controller
 {
     public function show(Request $request){
+
+        helper::read_json();
+
         // echo $request->archive_month_year;die; /* 06-2022 */
         $temp = explode('-',$request->archive_month_year);
         $month = $temp[0]; // 06
@@ -19,6 +23,9 @@ class ArchiveController extends Controller
 
     
     public function detail($year,$month){
+
+        helper::read_json();
+
         $post_data_archive = Post::with('rSubCategory')->whereMonth('created_at','=',$month)->whereYear('created_at','=',$year)->paginate(6);
 
         foreach($post_data_archive as $item){

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\helper\helper;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\HomeAdvertisement;
@@ -11,9 +12,12 @@ use App\Models\SubCategory;
 use App\Models\Video;
 use Illuminate\Http\Request;
 
+
 class HomeController extends Controller
 {
     public function index(){
+
+        helper::read_json();
 
         $data = HomeAdvertisement::where('id',1)->first();
 
@@ -42,6 +46,9 @@ class HomeController extends Controller
     }
 
     public function search(Request $request){
+
+        helper::read_json();
+
         // dd($request->all());
         $post_data = Post::with('rSubCategory')->orderBy('id','desc');
         if ($request->text_item != "") {

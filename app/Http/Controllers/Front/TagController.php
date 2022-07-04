@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\helper\helper;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Tag;
@@ -10,6 +11,8 @@ use Illuminate\Http\Request;
 class TagController extends Controller
 {
     public function show($tag_name){
+
+        helper::read_json();
         
         $all_tag_data = Tag::where('tag_name',$tag_name)->get();
         $post_ids_array = [];

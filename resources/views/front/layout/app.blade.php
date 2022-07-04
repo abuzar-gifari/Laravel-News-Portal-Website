@@ -1,14 +1,16 @@
 @if (!session()->get('session_short_name'))
+
     @php
         $current_short_name = $global_short_name;
     @endphp
-@else
+
+@else 
+
     @php
         $current_short_name = session()->get('session_short_name');
     @endphp
+
 @endif
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +49,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <ul>
-                            <li class="today-text">Today: January 20, 2022</li>
+                            <li class="today-text">{{ TODAY }}: January 20, 2022</li>
                             <li class="email-text">contact@arefindev.com</li>
                         </ul>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\helper\helper;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Author;
@@ -11,8 +12,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    // news/post id comes
     public function detail($id){
+
+
+        helper::read_json();
+
+
 
         $post_detail = Post::with('rSubCategory')->where('id',$id)->first();
         // dd($post_detail->sub_category_id);

@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use App\helper\helper;
 
 class ContactController extends Controller
 {
     public function contact(){
+        helper::read_json();
         $page_data = Page::where('id',1)->first();
         return view('front.contact',compact('page_data'));
     }

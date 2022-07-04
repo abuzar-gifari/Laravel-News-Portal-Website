@@ -91,6 +91,9 @@
             <!-- Online Poll -->
             <li class="{{ Request::is('admin/online-poll/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_online_poll_show') }}"><i class="fas fa-hand-point-right"></i> <span>Online Poll</span></a></li>
 
+            <!-- Language -->
+            <li class="{{ Request::is('admin/language/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_language_show') }}"><i class="fas fa-hand-point-right"></i> <span>Language</span></a></li>
+
 
         </ul>
     </aside>

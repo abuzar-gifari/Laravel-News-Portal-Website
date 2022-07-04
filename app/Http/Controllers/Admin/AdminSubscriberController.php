@@ -25,9 +25,10 @@ class AdminSubscriberController extends Controller
         $subject = $request->subject;
         $message = $request->message;
 
-        // get ALL the active subscribers
+        // get all the active subscribers
         $subscribers = Subscriber::where('status','Active')->get();
 
+        // send messages to all subscribers
         foreach($subscribers as $row){
         
             Mail::to($row->email)->send(new Websitemail($subject,$message));

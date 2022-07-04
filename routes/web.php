@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminAuthorController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminFAQController;
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\AdminLanguageController;
 use App\Http\Controllers\Admin\AdminLiveChannelController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminOnlinePollController;
@@ -477,3 +478,26 @@ Route::post('/admin/author/update/{id}',[AdminAuthorController::class,'update'])
 
 // author Data Delete
 Route::get('/admin/author/delete/{id}',[AdminAuthorController::class,'delete'])->name('admin_author_delete');
+
+
+
+
+/* Language Routes */
+
+// Show Language Page
+Route::get('/admin/language/show',[AdminLanguageController::class,'show'])->name('admin_language_show')->middleware('admin:admin');
+
+// Create Language Page
+Route::get('/admin/language/create',[AdminLanguageController::class,'create'])->name('admin_language_create')->middleware('admin:admin');
+
+// Language Submit/Store
+Route::post('/admin/language/store',[AdminLanguageController::class,'store'])->name('admin_language_store');
+
+// Language Edit Page Show
+Route::get('/admin/language/edit/{id}',[AdminLanguageController::class,'edit'])->name('admin_language_edit')->middleware('admin:admin');
+
+// Language Update
+Route::post('/admin/language/update/{id}',[AdminLanguageController::class,'update'])->name('admin_language_update');
+
+// Language Data Delete
+Route::get('/admin/language/delete/{id}',[AdminLanguageController::class,'delete'])->name('admin_language_delete');

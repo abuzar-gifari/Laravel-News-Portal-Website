@@ -504,3 +504,12 @@ Route::post('/admin/language/update/{id}',[AdminLanguageController::class,'updat
 
 // Language Data Delete
 Route::get('/admin/language/delete/{id}',[AdminLanguageController::class,'delete'])->name('admin_language_delete');
+
+
+
+
+// Update language detail
+Route::get('/admin/language/update-detail/{id}',[AdminLanguageController::class,'update_detail'])->name('language_update_detail');
+
+// Update language detail submit
+Route::post('/admin/language/update-detail-submit/{id}',[AdminLanguageController::class,'update_detail_submit'])->name('language_update_detail_submit');

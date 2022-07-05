@@ -14,10 +14,10 @@
                             <label>Name</label>
                             <input type="text" class="form-control" name="name" value="{{ $language_data->name }}">
                         </div>
-                        <div class="form-group mb-3">
+                        {{-- <div class="form-group mb-3">
                             <label>Short Name</label>
                             <input type="text" class="form-control" name="short_name" value="{{ $language_data->short_name }}">
-                        </div>
+                        </div> --}}
                         <div class="form-group mb-3">
                             <label>Is Default</label>
                             <select name="is_default" class="form-control">

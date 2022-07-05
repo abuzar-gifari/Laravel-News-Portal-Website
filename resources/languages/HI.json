@@ -1,4 +1,15 @@
 {
     "TODAY": "Today",
-    "LATEST_NEWS": "Latest News"
+    "LATEST_NEWS": "Latest News",
+    "FOOTER_COL_1_HEADING": "About Us",
+    "FOOTER_COL_1_TEXT": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "FOOTER_COL_2_HEADING": "Useful Links",
+    "FOOTER_COL_3_HEADING": "Contact Us",
+    "FOOTER_COL_4_HEADING": "NewsLetter",
+    "FOOTER_ADDRESS": "34 Antiger Lane,PK Lane, USA, 12937",
+    "FOOTER_PHONE": "122-222-1212",
+    "FOOTER_EMAIL": "contact@arefindev.com",
+    "NEWSLETTER_TEXT": "In order to get the latest news and other great items, please subscribe us here:",
+    "EMAIL_ADDRESS": "Email Address",
+    "SUBSCRIBE_NOW": "Subscribe Now"
 }

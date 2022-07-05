@@ -1,4 +1,9 @@
+
+<!-- 'global short name' is by default EN (English) -->
+
 @if (!session()->get('session_short_name'))
+
+    <!-- 'session_short_name' comes from LanguageController -->
 
     @php
         $current_short_name = $global_short_name;
@@ -11,6 +16,8 @@
     @endphp
 
 @endif
+
+<!-- // -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -259,7 +266,7 @@
         <div id="loader"></div>
 
                 
-        {{-- Because There Have Multiple Errors --}}
+        <!-- Because There Have Multiple Errors -->
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 <script>

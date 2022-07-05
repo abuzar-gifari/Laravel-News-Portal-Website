@@ -11,7 +11,7 @@
 
                             <!-- home menu -->
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('home') }}">{{ HOME }}</a>
                             </li>
 
                             <!-- Dynamic menu -->

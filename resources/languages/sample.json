@@ -9,6 +9,21 @@
     "FOOTER_ADDRESS": "34 Antiger Lane,PK Lane, USA, 12937",
     "FOOTER_PHONE": "122-222-1212",
     "FOOTER_EMAIL": "contact@arefindev.com",
-    "NEWSLETTER_TEXT":"In order to get the latest news and other great items, please subscribe us here:","EMAIL_ADDRESS":"Email Address",
-    "SUBSCRIBE_NOW":"Subscribe Now" 
+    "NEWSLETTER_TEXT": "In order to get the latest news and other great items, please subscribe us here:",
+    "EMAIL_ADDRESS": "Email Address",
+    "SUBSCRIBE_NOW": "Subscribe Now",
+    "HOME": "Home",
+    "SELECT_CATEGORY": "Select Category",
+    "SELECT_SUBCATEGORY": "Select SubCategory",
+    "SEARCH": "Search",
+    "SEE_ALL_NEWS": "See All News",
+    "VIDEOS": "Videos",
+    "TAGS": "Tags",
+    "ARCHIVE": "Archive",
+    "SELECT_MONTH": "Select Month",
+    "POPULAR_AND_LATEST_NEWS": "Popular and Latest News",
+    "RECENT_NEWS": "Recent News",
+    "POPULAR_NEWS": "Popular News",
+    "ONLINE_POLL":"Online Poll",
+    "COPYRIGHT_TEXT":"Copyright 2022,  All Rights Reserved."
 }

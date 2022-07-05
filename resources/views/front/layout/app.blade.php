@@ -208,7 +208,7 @@
         </div>
 
         <div class="copyright">
-            Copyright 2022, ArefinDev. All Rights Reserved.
+            {{ COPYRIGHT_TEXT }}
         </div>
      
         <div class="scroll-top">

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('question');
             $table->text('yes_vote');
             $table->text('no_vote');
+            $table->integer('language_id');
             $table->timestamps();
         });
     }

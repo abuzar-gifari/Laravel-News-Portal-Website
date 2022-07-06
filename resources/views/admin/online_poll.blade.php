@@ -14,6 +14,7 @@
                                 <th>Question</th>
                                 <th>Yes Vote</th>
                                 <th>No Vote</th>
+                                <th>Language</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -29,6 +30,9 @@
                                         </td>
                                         <td>
                                             {{ $row->no_vote }}
+                                        </td>
+                                        <td>
+                                            {{ $row->rLanguage->name }}
                                         </td>
                                         <td class="pt_10 pb_10">
                                             <a href="{{ route('admin_online_poll_edit',$row->id) }}" class="btn btn-primary">Edit</a>

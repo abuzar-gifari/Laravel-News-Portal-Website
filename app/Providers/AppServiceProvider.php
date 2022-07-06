@@ -45,10 +45,10 @@ class AppServiceProvider extends ServiceProvider
 
         $live_channel_data = LiveChannel::get();
 
-        $recent_news_data = Post::with('rSubCategory')->orderBy('id','desc')->get();
-        $popular_news_data = Post::with('rSubCategory')->orderBy('visitors','desc')->get();
+        // $recent_news_data = Post::with('rSubCategory')->orderBy('id','desc')->get();
+        // $popular_news_data = Post::with('rSubCategory')->orderBy('visitors','desc')->get();
 
-        $online_poll_data = OnlinePoll::orderBy('id','desc')->first();
+        
 
         $language_data = Language::get();
 
@@ -60,9 +60,8 @@ class AppServiceProvider extends ServiceProvider
         view()->share('global_categories',$categories);
         view()->share('global_page_data',$page_data);
         view()->share('global_live_channel_data',$live_channel_data);
-        view()->share('global_recent_news_data',$recent_news_data);
-        view()->share('global_popular_news_data',$popular_news_data);
-        view()->share('global_online_poll_data',$online_poll_data);
+        // view()->share('global_recent_news_data',$recent_news_data);
+        // view()->share('global_popular_news_data',$popular_news_data);
         view()->share('global_language_data',$language_data);
         view()->share('global_short_name',$default_language_data->short_name);
     }

@@ -4,11 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Previous Polls</h2>
+                <h2>{{ PREVIOUS_POLL }}</h2>
                 <nav class="breadcrumb-container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Previous Polls</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ HOME }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ PREVIOUS_POLL }}</li>
                     </ol>
                 </nav>
             </div>
@@ -55,7 +55,7 @@
                             {!! $item->question !!}
                         </div>
                         <div class="poll-date">
-                            <span><b>Poll Date: </b></span>
+                            <span><b>{{ POLL_DATE }}: </b></span>
                             @php
                                 $ts = strtotime($item->created_at);
                                 $created_at = date('d F, Y',$ts);
@@ -64,13 +64,13 @@
                             <a href="javascript:void;">{{ $created_at }}</a>
                         </div>
                         <div class="total-vote">
-                            <b>Total Votes:</b> {{ $total_vote }}
+                            <b>{{ TOTAL_VOTES }}:</b> {{ $total_vote }}
                         </div>
                         <div class="poll-result">                    
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <tr>
-                                        <td>Yes ({{ $item->yes_vote }})</td>
+                                        <td>{{ YES }} ({{ $item->yes_vote }})</td>
                                         <td>
                                             <div class="progress">
                                                 <div class="progress-bar bg-success" role="progressbar" style="width: {{ $total_yes_percentage }}%" aria-valuenow="{{ $total_yes_percentage }}" aria-valuemin="0" aria-valuemax="100">{{ $total_yes_percentage }}%</div>
@@ -78,7 +78,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>No ({{ $item->no_vote }})</td>
+                                        <td>{{ NO }} ({{ $item->no_vote }})</td>
                                         <td>
                                             <div class="progress">
                                                 <div class="progress-bar bg-danger" role="progressbar" style="width: {{ $total_no_percentage }}%" aria-valuenow="{{ $total_no_percentage }}" aria-valuemin="0" aria-valuemax="100">{{ $total_no_percentage }}%</div>

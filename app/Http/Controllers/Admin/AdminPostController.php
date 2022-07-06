@@ -18,7 +18,7 @@ class AdminPostController extends Controller
 
     // show post page
     public function show(){
-        $posts = Post::with('rSubCategory.rCategory')->get();
+        $posts = Post::with('rSubCategory.rCategory','rLanguage')->get();
         return view('admin.posts',compact('posts'));
     }
     
@@ -64,6 +64,7 @@ class AdminPostController extends Controller
         $post->admin_id = Auth::guard('admin')->user()->id; // we can get admin id
         $post->is_share = $request->is_share;
         $post->is_comment = $request->is_comment;
+        $post->language_id = $request->language_id;
         // store in the table
         $post->save();
 
@@ -168,6 +169,7 @@ class AdminPostController extends Controller
         $post->admin_id = Auth::guard('admin')->user()->id; // we can get admin id
         $post->is_share = $request->is_share;
         $post->is_comment = $request->is_comment;
+        $post->language_id = $request->language_id;
         // store in the table
         $post->update();
 

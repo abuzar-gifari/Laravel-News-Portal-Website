@@ -5,11 +5,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Search Result</h2>
+                <h2>{{ SEARCH_RESULT }}</h2>
                 <nav class="breadcrumb-container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item">Search Result</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ HOME }}</a></li>
+                        <li class="breadcrumb-item">{{ SEARCH_RESULT }}</a></li>
                     </ol>
                 </nav>
             </div>

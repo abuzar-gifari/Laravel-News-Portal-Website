@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('admin_id');
             $table->integer('is_share');
             $table->integer('is_comment');
+            $table->integer('language_id');
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@ class AdminOnlinePollController extends Controller
       
     // show online poll page
     public function show(){
-        $online_poll_data = OnlinePoll::orderBy('id','desc')->get();
+        $online_poll_data = OnlinePoll::with('rLanguage')->orderBy('id','desc')->get();
         return view('admin.online_poll',compact('online_poll_data'));
     }
     
@@ -34,6 +34,7 @@ class AdminOnlinePollController extends Controller
         $online_poll->question = $request->question;
         $online_poll->yes_vote = 0;
         $online_poll->no_vote = 0;
+        $online_poll->language_id = $request->language_id;
         $online_poll->save();
         return redirect()->route('admin_online_poll_show')->with('success_message','Data Created Successfully');
     }
@@ -41,7 +42,7 @@ class AdminOnlinePollController extends Controller
     
     // online poll edit
     public function edit($id){
-        $online_poll_data = OnlinePoll::where('id',$id)->first();
+        $online_poll_data = OnlinePoll::with('rLanguage')->where('id',$id)->first();
         return view('admin.online_poll_edit',compact('online_poll_data'));
     }
     
@@ -55,6 +56,7 @@ class AdminOnlinePollController extends Controller
         ]);
 
         $online_poll->question = $request->question;
+        $online_poll->language_id = $request->language_id;
         $online_poll->update();
         return redirect()->route('admin_online_poll_show')->with('success_message','Data Updated Successfully');
     }

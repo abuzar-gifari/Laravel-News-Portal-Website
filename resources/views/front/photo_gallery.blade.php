@@ -4,11 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Photo Gallery Page</h2>
+                <h2>{{ PHOTO_GALLERY }}</h2>
                 <nav class="breadcrumb-container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Photo Gallery</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ HOME }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ PHOTO_GALLERY }}</li>
                     </ol>
                 </nav>
             </div>

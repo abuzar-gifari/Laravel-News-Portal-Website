@@ -57,7 +57,7 @@
                     <div class="col-md-6">
                         <ul>
                             <li class="today-text">{{ TODAY }}: January 20, 2022</li>
-                            <li class="email-text">contact@arefindev.com</li>
+                            <li class="email-text">shaikh35-3024@diu.edu.bd</li>
                         </ul>
                     </div>
                     <div class="col-md-6">

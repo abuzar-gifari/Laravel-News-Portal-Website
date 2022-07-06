@@ -5,11 +5,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>All posts of {{ $updated_date }}</h2>
+                <h2>{{ ALL_POSTS_OF }} {{ $updated_date }}</h2>
                 <nav class="breadcrumb-container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item">Archive</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ HOME }}</a></li>
+                        <li class="breadcrumb-item">{{ ARCHIVE }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ $updated_date }}</li>
                     </ol>
                 </nav>

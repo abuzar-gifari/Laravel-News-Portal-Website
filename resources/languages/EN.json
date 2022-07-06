@@ -28,5 +28,19 @@
     "COPYRIGHT_TEXT": "Copyright 2022,  All Rights Reserved.",
     "GALLERY": "Gallery",
     "PHOTO_GALLERY": "Photo Gallery",
-    "VIDEO_GALLERY": "Video Gallery"
+    "VIDEO_GALLERY": "Video Gallery",
+    "SHARE": "Share",
+    "COMMENT": "Comment",
+    "RELATED_NEWS": "Related News",
+    "SEARCH_RESULT": "Search Result",
+    "ALL_POSTS_OF": "All Posts of",
+    "POSTS": "posts",
+    "TITLE_OR_DESCRIPTION": "Title or Description",
+    "YES": "yes",
+    "NO": "no",
+    "SUBMIT": "Submit",
+    "OLD_RESULT": "Old Result",
+    "PREVIOUS_POLL": "Previous Polls",
+    "POLL_DATE": "Poll Date",
+    "TOTAL_VOTES": "Total Vote"
 }

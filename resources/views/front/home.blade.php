@@ -180,7 +180,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <input type="text" name="text_item" class="form-control" placeholder="Title or Description">
+                            <input type="text" name="text_item" class="form-control" placeholder="{{ TITLE_OR_DESCRIPTION }}">
                         </div>
                     </div>
                     <div class="col-md-3">

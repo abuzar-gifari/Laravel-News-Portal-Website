@@ -7,7 +7,7 @@
                 <h2>{{ $post_detail->post_title }}</h2>
                 <nav class="breadcrumb-container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ HOME }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">
                             <a href="{{ route('category',$post_detail->sub_category_id) }}">
                                 {{ $post_detail->rSubCategory->sub_category_name }}
@@ -53,7 +53,7 @@
                     {!! $post_detail->post_detail !!}
                 </div>
                 <div class="tag-section">
-                    <h2>Tags</h2>
+                    <h2>{{ TAGS }}</h2>
                     <div class="tag-section-content">
                         @foreach ($tag_data as $tag)
                             <a href="{{ route('tag_show',$tag->tag_name) }}"><span class="badge bg-success">{{ $tag->tag_name }}</span></a>
@@ -63,7 +63,7 @@
 
                 @if ($post_detail->is_share == 1)
                    <div class="share-content">
-                        <h2>Share</h2>
+                        <h2>{{ SHARE }}</h2>
                         <div class="addthis_inline_share_toolbox"></div>
                     </div> 
                 @endif
@@ -71,7 +71,7 @@
                 
                 @if ($post_detail->is_comment == 1)
                     <div class="comment-fb">
-                        <h2>Comment</h2>
+                        <h2>{{ COMMENT }}</h2>
                         <div id="disqus_thread"></div>
                         <script>
                             (function() { // DON'T EDIT BELOW THIS LINE
@@ -90,7 +90,7 @@
 
                 <div class="related-news">
                     <div class="related-news-heading">
-                        <h2>Related News</h2>
+                        <h2>{{ RELATED_NEWS }}</h2>
                     </div>
                     <div class="related-post-carousel owl-carousel owl-theme">
                         @foreach ($related_post_array as $item)

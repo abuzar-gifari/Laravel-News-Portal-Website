@@ -43,5 +43,15 @@
     "PREVIOUS_POLL": "Previous Polls",
     "POLL_DATE": "Poll Date",
     "TOTAL_VOTES": "Total Vote",
-    "FAQ_PAGE_TITLE": "Faq"
+    "FAQ_PAGE_TITLE": "Faq",
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "MESSAGE": "Message",
+    "SEND_MESSAGE": "Send Message",
+    "FAQ": "Faq",
+    "ABOUT": "About",
+    "CONTACT": "Contact",
+    "LOGIN": "Login",
+    "PASSWORD": "Password",
+    "FORGET_PASSWORD": "Forget Password"
 }

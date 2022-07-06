@@ -28,6 +28,7 @@ class HomeController extends Controller
         }
         $current_language_id = Language::where('short_name',$current_short_name)->first()->id;
         //dd($current_language_id);
+        
 
 
         $data = HomeAdvertisement::where('id',1)->first();

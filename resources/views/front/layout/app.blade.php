@@ -63,16 +63,16 @@
                     <div class="col-md-6">
                         <ul class="right">
                             @if ($global_page_data->faq_status=="Show")
-                                <li class="menu"><a href="{{ route('faq') }}">FAQ</a></li>
+                                <li class="menu"><a href="{{ route('faq') }}">{{ FAQ }}</a></li>
                             @endif
                             @if ($global_page_data->about_status=="Show")
-                                <li class="menu"><a href="{{ route('about') }}">About</a></li>
+                                <li class="menu"><a href="{{ route('about') }}">{{ ABOUT }}</a></li>
                             @endif
                             @if ($global_page_data->contact_status=="Show")
-                                <li class="menu"><a href="{{ route('contact') }}">Contact</a></li>
+                                <li class="menu"><a href="{{ route('contact') }}">{{ CONTACT }}</a></li>
                             @endif
                             @if ($global_page_data->login_status=="Show")
-                                <li class="menu"><a href="{{ route('login') }}">Login</a></li>
+                                <li class="menu"><a href="{{ route('login') }}">{{ LOGIN }}</a></li>
                             @endif
                             <li>
                                 <div class="language-switch">

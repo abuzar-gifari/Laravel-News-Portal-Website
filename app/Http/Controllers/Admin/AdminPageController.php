@@ -101,7 +101,7 @@ class AdminPageController extends Controller
 
     /* Contact routes */
     public function contact(){
-        $page_data = Page::where('id',1)->first();
+        $page_data = Page::with('rLanguage')->get();
         return view('admin.page_contact',compact('page_data'));
     }
 
@@ -112,7 +112,9 @@ class AdminPageController extends Controller
             'contact_title' => 'required',
         ]);
 
-        $page = Page::where('id',1)->first();
+        $id = $request->id;
+
+        $page = Page::where('id',$id)->first();
         $page->contact_title = $request->contact_title;
         $page->contact_detail = $request->contact_detail;
         $page->contact_map = $request->contact_map;

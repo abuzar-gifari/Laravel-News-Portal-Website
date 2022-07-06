@@ -4,18 +4,28 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\Page;
 use App\Models\Admin;
+use App\helper\helper;
+use App\Models\Language;
 use App\Mail\Websitemail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use App\helper\helper;
 
 class ContactController extends Controller
 {
     public function contact(){
+
         helper::read_json();
-        $page_data = Page::where('id',1)->first();
+
+        if (!session('session_short_name')) {
+            $current_short_name = Language::where('is_default','Yes')->first()->short_name;
+        }else {
+            $current_short_name = session('session_short_name');
+        }
+        $current_language_id = Language::where('short_name',$current_short_name)->first()->id;
+        
+        $page_data = Page::where('language_id',$current_language_id)->first();
         return view('front.contact',compact('page_data'));
     }
     

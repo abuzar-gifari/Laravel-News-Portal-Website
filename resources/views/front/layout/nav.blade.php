@@ -1,3 +1,28 @@
+
+@if (!session()->get('session_short_name'))
+
+    <!-- 'session_short_name' comes from LanguageController -->
+
+    @php
+        $current_short_name = $global_short_name;
+    @endphp
+
+@else 
+
+    @php
+        $current_short_name = session()->get('session_short_name');
+    @endphp
+
+@endif
+
+@php
+    $current_language = \App\Models\Language::where('short_name',$current_short_name)->first();
+    $current_language_id = $current_language->id;
+@endphp
+
+
+
+
 <div class="website-menu">
     <div class="container">
         <div class="row">
@@ -14,32 +39,43 @@
                                 <a class="nav-link active" aria-current="page" href="{{ route('home') }}">{{ HOME }}</a>
                             </li>
 
-                            <!-- Dynamic menu -->
+
+
+                            <!-- show category and sub-category section in navbar -->
                             @foreach ($global_categories as $single_category_item)
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ $single_category_item->category_name }}
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                        @foreach ($single_category_item->rSubCategory as $sub_category_item)
-                                            <li><a class="dropdown-item" href="{{ route('category',$sub_category_item->id) }}">{{ $sub_category_item->sub_category_name }}</a></li>
-                                        @endforeach
-
-                                    </ul>
-                                </li>
-                            @endforeach
                             
+                                @if ($current_language_id==$single_category_item->language_id)
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="javascript:void;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{ $single_category_item->category_name }}
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                            @foreach ($single_category_item->rSubCategory as $sub_category_item)
+                                                <li><a class="dropdown-item" href="{{ route('category',$sub_category_item->id) }}">{{ $sub_category_item->sub_category_name }}</a></li>
+                                            @endforeach
+
+                                        </ul>
+                                    </li>    
+                                @endif
+                                
+                            @endforeach
+                            <!--// show category and sub-category section in navbar -->
+                            
+
+
                             <!-- photo & video gallery menus -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Gallery
+                                {{ GALLERY }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('photo_gallery') }}">Photo Gallery</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('video_gallery') }}">Video Gallery</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('photo_gallery') }}">{{ PHOTO_GALLERY }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('video_gallery') }}">{{ VIDEO_GALLERY }}</a></li>
                                 </ul>
                             </li>
+
+
                         </ul>
                     </div>
                 </nav>

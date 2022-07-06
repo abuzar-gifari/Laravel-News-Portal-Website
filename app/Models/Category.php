@@ -13,4 +13,8 @@ class Category extends Model
     public function rSubCategory(){
         return $this->hasMany(SubCategory::class);
     }
+
+    public function rLanguage(){
+        return $this->belongsTo(Language::class,'language_id');
+    }
 }

@@ -25,5 +25,8 @@
     "RECENT_NEWS": "Recent News",
     "POPULAR_NEWS": "Popular News",
     "ONLINE_POLL": "Online Poll",
-    "COPYRIGHT_TEXT": "Copyright 2022,  All Rights Reserved."
+    "COPYRIGHT_TEXT": "Copyright 2022,  All Rights Reserved.",
+    "GALLERY": "Gallery",
+    "PHOTO_GALLERY": "Photo Gallery",
+    "VIDEO_GALLERY": "Video Gallery"
 }

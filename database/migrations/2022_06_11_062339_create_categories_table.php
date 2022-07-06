@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('category_name');
             $table->string('show_on_menu');
             $table->string('category_order');
+            $table->integer('language_id');
             $table->timestamps();
         });
     }

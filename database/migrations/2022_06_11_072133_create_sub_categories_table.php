@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('show_on_menu');
             $table->string('sub_category_order');
             $table->integer('category_id');
+            $table->integer('language_id');
             $table->timestamps();
         });
     }

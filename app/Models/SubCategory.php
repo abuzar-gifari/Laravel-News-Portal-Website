@@ -18,4 +18,8 @@ class SubCategory extends Model
     public function rPost(){
         return $this->hasMany(Post::class)->orderBy('id','desc');
     }
+
+    public function rLanguage(){
+        return $this->belongsTo(Language::class,'language_id');
+    }
 }

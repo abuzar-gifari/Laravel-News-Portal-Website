@@ -14,6 +14,7 @@
                                 <th>Category Name</th>
                                 <th>Show on Menu?</th>
                                 <th>Order</th>
+                                <th>Language</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -24,6 +25,7 @@
                                         <td>{{ $row->category_name }}</td>
                                         <td>{{ $row->show_on_menu }}</td>
                                         <td>{{ $row->category_order }}</td>
+                                        <td>{{ $row->rLanguage->name }}</td>
                                         <td class="pt_10 pb_10">
                                             <a href="{{ route('admin_sidebar_ad_edit',$row->id) }}" class="btn btn-primary">Edit</a>
                                             <a href="{{ route('admin_sidebar_ad_delete',$row->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete</a>

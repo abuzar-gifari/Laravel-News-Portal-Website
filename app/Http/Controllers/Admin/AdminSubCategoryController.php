@@ -12,7 +12,7 @@ class AdminSubCategoryController extends Controller
 
     // show sub-categories page
     public function show(){
-        $subcategories_data = SubCategory::with('rCategory')->orderBy('sub_category_order','asc')->get();
+        $subcategories_data = SubCategory::with('rCategory','rLanguage')->orderBy('sub_category_order','asc')->get();
         return view('admin.sub_categories',compact('subcategories_data'));
     }
     
@@ -33,7 +33,8 @@ class AdminSubCategoryController extends Controller
             'sub_category_name' => 'required',
             'show_on_menu' => 'required',
             'sub_category_order' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'language_id'=>'required'
         ]);
         // send data to the database
         $subcategory->sub_category_name = $request->sub_category_name;
@@ -41,6 +42,7 @@ class AdminSubCategoryController extends Controller
         $subcategory->show_on_home = $request->show_on_home;
         $subcategory->sub_category_order = $request->sub_category_order;
         $subcategory->category_id = $request->category_id;
+        $subcategory->language_id = $request->language_id;
         // store in the table
         $subcategory->save();
         return redirect()->route('admin_sub_category_show')->with('success_message','Sub Category Created Successfully');
@@ -64,7 +66,8 @@ class AdminSubCategoryController extends Controller
             'sub_category_name' => 'required',
             'show_on_menu' => 'required',
             'sub_category_order' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'language_id'=>'required'
         ]);
         // send data to the database
         $subcategory->sub_category_name = $request->sub_category_name;
@@ -72,6 +75,7 @@ class AdminSubCategoryController extends Controller
         $subcategory->show_on_home = $request->show_on_home;
         $subcategory->sub_category_order = $request->sub_category_order;
         $subcategory->category_id = $request->category_id;
+        $subcategory->language_id = $request->language_id;
         // update the table
         $subcategory->update();
         return redirect()->route('admin_sub_category_show')->with('success_message','Sub Category Updated Successfully');

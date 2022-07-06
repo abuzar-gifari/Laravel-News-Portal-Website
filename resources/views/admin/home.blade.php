@@ -1,17 +1,17 @@
 @extends('admin.layout.app')
 
-@section('heading','Dashboard')
+@section('heading','Admin Dashboard')
 
 @section('content')
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-primary">
-                    <i class="far fa-user"></i>
+                    <i class="fab fa-bandcamp"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Total News Categories</h4>
+                        <h4>Total Categories</h4>
                     </div>
                     <div class="card-body">
                         {{ $total_categories }}
@@ -84,7 +84,7 @@
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-secondary">
-                    <i class="fas fa-bullhorn"></i>
+                    <i class="fas fa-comment"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
@@ -102,7 +102,7 @@
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-info">
-                    <i class="fa fa-square-poll-horizontal" style="font-size: 30px;"></i>
+                    <i class="fas fa-poll"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
@@ -117,7 +117,7 @@
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-danger">
-                    <i class="fas fa-bullhorn"></i>
+                    <i class="fab fa-google-drive"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
@@ -132,7 +132,7 @@
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
             <div class="card card-statistic-1">
                 <div class="card-icon bg-warning">
-                    <i style="font-size: 30px;" class="fa fa-subscript"></i>
+                    <i class="far fa-user"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">

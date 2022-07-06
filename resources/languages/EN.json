@@ -53,5 +53,9 @@
     "CONTACT": "Contact",
     "LOGIN": "Login",
     "PASSWORD": "Password",
-    "FORGET_PASSWORD": "Forget Password"
+    "FORGET_PASSWORD": "Forget Password",
+    "BACK_TO_LOGIN": "Back to login",
+    "TERMS_AND_CONDITIONS": "Terms and Conditions",
+    "PRIVACY_POLICY": "Privacy Policy",
+    "DISCLAIMER": "Disclaimer"
 }

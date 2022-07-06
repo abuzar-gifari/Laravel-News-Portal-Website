@@ -35,8 +35,12 @@
         
         <!-- All Javascripts -->
         @include('front.layout.scripts')
+{{-- 
+        <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap" rel="stylesheet"> --}}
 
-        <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@400;600;700&display=swap" rel="stylesheet">
 
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6212352ed76fda0a"></script>        
         
@@ -50,7 +54,7 @@
         </script>
     
     </head>
-    <body>
+    <body style="font-family: 'Amiko', sans-serif;">
         <div class="top">
             <div class="container">
                 <div class="row">
@@ -99,7 +103,7 @@
                     <div class="col-md-4 d-flex align-items-center">
                         <div class="logo">
                             <a href="{{ route('home') }}">
-                                <img src="{{ asset('uploads/logo.png') }}" alt="">
+                                <img src="{{ asset('uploads/amader_songbad.png') }}" alt="">
                             </a>
                         </div>
                     </div>
@@ -142,11 +146,11 @@
                         <div class="item">
                             <h2 class="heading">{{ FOOTER_COL_2_HEADING }}</h2>
                             <ul class="useful-links">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="{{ route('terms') }}">Terms and Conditions</a></li>
-                                <li><a href="privacy.html">Privacy Policy</a></li>
-                                <li><a href="disclaimer.html">Disclaimer</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="index.html">{{ HOME }}</a></li>
+                                <li><a href="{{ route('terms') }}">{{ TERMS_AND_CONDITIONS }}</a></li>
+                                <li><a href="privacy.html">{{ PRIVACY_POLICY }}</a></li>
+                                <li><a href="disclaimer.html">{{ DISCLAIMER }}</a></li>
+                                <li><a href="{{ route('contact') }}">{{ CONTACT }}</a></li>
                             </ul>
                         </div>
                     </div>

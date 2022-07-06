@@ -49,6 +49,7 @@ class LoginController extends Controller
 
 
     public function forget_password(){
+        helper::read_json();
         return view('front.forget_password');
     }
 
@@ -78,6 +79,7 @@ class LoginController extends Controller
     }
 
     public function reset_password($token,$email){
+        helper::read_json();
         $author_data = Author::where('token',$token)->where('email',$email)->first();
         return view('front.reset_password',compact('token','email'));
     }

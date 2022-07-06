@@ -4,10 +4,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Forget Password</h2>
+                <h2>{{ FORGET_PASSWORD }}</h2>
                 <nav class="breadcrumb-container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ HOME }}</a></li>
                     </ol>
                 </nav>
             </div>
@@ -23,12 +23,12 @@
                         @csrf
                         <div class="login-form">
                             <div class="mb-3">
-                                <label for="" class="form-label">Email Address</label>
+                                <label for="" class="form-label">{{ EMAIL_ADDRESS }}</label>
                                 <input type="text" class="form-control" name="email">
                             </div>
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary bg-website">Submit</button>
-                                <a href="{{ route('login') }}">Back to Login</a>
+                                <button type="submit" class="btn btn-primary bg-website">{{ SUBMIT }}</button>
+                                <a href="{{ route('login') }}">{{ BACK_TO_LOGIN }}</a>
                             </div>
                         </div>
                     </form>

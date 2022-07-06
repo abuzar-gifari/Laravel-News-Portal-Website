@@ -4,11 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>{{ $page_data->faq_title }}</h2>
+                <h2>{{ FAQ_PAGE_TITLE }}</h2>
                 <nav class="breadcrumb-container">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ HOME }}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $page_data->faq_title }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ FAQ_PAGE_TITLE }}</li>
                     </ol>
                 </nav>
             </div>

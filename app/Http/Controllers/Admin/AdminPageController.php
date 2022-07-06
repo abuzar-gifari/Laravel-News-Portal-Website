@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AdminPageController extends Controller
 {
     public function about(){
-        $page_data = Page::where('id',1)->first();
+        $page_data = Page::with('rLanguage')->get();
         return view('admin.page_about',compact('page_data'));
     }
 
@@ -21,7 +21,7 @@ class AdminPageController extends Controller
             'about_detail' => 'required',
         ]);
 
-        $page = Page::where('id',1)->first();
+        $page = Page::where('id',$request->id)->first();
         $page->about_title = $request->about_title;
         $page->about_detail = $request->about_detail;
         $page->about_status = $request->about_status;

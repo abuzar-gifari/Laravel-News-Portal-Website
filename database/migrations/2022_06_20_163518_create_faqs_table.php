@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('faq_title');
             $table->text('faq_detail');
+            $table->integer('language_id');
             $table->timestamps();
         });
     }

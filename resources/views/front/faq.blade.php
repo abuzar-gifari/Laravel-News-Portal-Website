@@ -7,7 +7,7 @@
                 <h2>{{ $page_data->faq_title }}</h2>
                 <nav class="breadcrumb-container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ HOME }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ $page_data->faq_title }}</li>
                     </ol>
                 </nav>

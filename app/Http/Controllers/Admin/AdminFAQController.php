@@ -11,7 +11,7 @@ class AdminFAQController extends Controller
     
     // show videos page
     public function show(){
-        $faq_data = Faq::get();
+        $faq_data = Faq::with('rLanguage')->get();
         return view('admin.faq_show',compact('faq_data'));
     }
     
@@ -34,6 +34,7 @@ class AdminFAQController extends Controller
         // send data to the database
         $faq->faq_title = $request->faq_title;
         $faq->faq_detail = $request->faq_detail;
+        $faq->language_id = $request->language_id;
         // store in the table
         $faq->save();
         return redirect()->route('admin_faq_show')->with('success_message','Data Created Successfully');
@@ -58,6 +59,7 @@ class AdminFAQController extends Controller
         // send data to the database
         $faq->faq_title = $request->faq_title;
         $faq->faq_detail = $request->faq_detail;
+        $faq->language_id = $request->language_id;
         // update the table
         $faq->update();
         return redirect()->route('admin_faq_show')->with('success_message','Data Updated Successfully');

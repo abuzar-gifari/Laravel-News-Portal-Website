@@ -6,7 +6,11 @@
 <link rel="stylesheet" href="{{ asset('dist/css/bootstrap-tagsinput.css') }}">
 <link rel="stylesheet" href="{{ asset('dist/css/duotone-dark.css') }}">
 <link rel="stylesheet" href="{{ asset('dist/css/dataTables.bootstrap4.min.css') }}">
+
+<!-- for importing izitoast functionality -->
 <link rel="stylesheet" href="{{ asset('dist/css/iziToast.min.css') }}">
+<!--// for importing izitoast functionality -->
+
 <link rel="stylesheet" href="{{ asset('dist/css/fontawesome-iconpicker.min.css') }}">
 <link rel="stylesheet" href="{{ asset('dist/css/bootstrap4-toggle.min.css') }}">
 <link rel="stylesheet" href="{{ asset('dist/css/summernote-bs4.css') }}">

@@ -28,6 +28,8 @@ class AdminOnlinePollController extends Controller
         // validation
         $request->validate([
             'question' => 'required',
+        ],[
+            'question.required' => 'Online poll question is required'
         ]);
 
         // send data to the database
@@ -53,6 +55,8 @@ class AdminOnlinePollController extends Controller
         // validation
         $request->validate([
             'question' => 'required',
+        ],[
+            'question.required' => 'Online poll question is required'
         ]);
 
         $online_poll->question = $request->question;

@@ -35,12 +35,10 @@
         
         <!-- All Javascripts -->
         @include('front.layout.scripts')
-{{-- 
-        <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap" rel="stylesheet"> --}}
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet">
 
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6212352ed76fda0a"></script>        
         
@@ -54,7 +52,7 @@
         </script>
     
     </head>
-    <body style="font-family: 'Amiko', sans-serif;">
+    <body style="font-family: 'Roboto Slab', serif;">
         <div class="top">
             <div class="container">
                 <div class="row">
@@ -226,9 +224,15 @@
             <i class="fas fa-angle-up"></i>
         </div>
 		
+
+        <!-- footer -->
         @include('front.layout.scripts_footer')   
         
         
+
+
+
+
         <!-- Send Email by Ajax Request -->
         <script>
             (function($){
@@ -268,9 +272,12 @@
             })(jQuery);
         </script>
         <div id="loader"></div>
+        <!--// Send Email by Ajax Request -->
 
                 
-        <!-- Because There Have Multiple Errors -->
+
+
+        <!-- iziToast functionality code here -->
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 <script>
@@ -302,6 +309,10 @@
                 });
             </script>
         @endif
+        <!--// iziToast functionality code here -->    
+
+
+
 		
    </body>
 </html>

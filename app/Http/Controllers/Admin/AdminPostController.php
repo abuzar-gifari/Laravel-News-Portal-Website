@@ -43,6 +43,10 @@ class AdminPostController extends Controller
             'post_title' => 'required',
             'post_detail' => 'required',
             'post_photo' => 'required|image|mimes:png,jpg,gif'
+        ],[
+            'post_title.required' => 'Post title is required',
+            'post_detail.required' => 'Post detail is required',
+            'post_photo.required' => 'Please upload a photo'
         ]);
 
         // for getting the auto increment number
@@ -143,6 +147,9 @@ class AdminPostController extends Controller
         $request->validate([
             'post_title' => 'required',
             'post_detail' => 'required',
+        ],[
+            'post_title.required' => 'Post title is required',
+            'post_detail.required' => 'Post detail is required'
         ]);
 
         $post = Post::where('id',$id)->first();

@@ -17,14 +17,19 @@
 <body>
 <div id="app">
     <div class="main-wrapper">
-        {{-- NavBar --}}
+
+        <!-- navbar -->
         <div class="navbar-bg"></div>
         @include('admin.layout.navbar')
+        <!--// navbar -->
 
-        {{-- SideBar --}}
+
+        <!-- sidebar -->
         @include('admin.layout.sidebar')
+        <!--// sidebar -->
 
-        {{-- Main Content --}}
+
+        <!-- admin panel main content loads here -->
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
@@ -37,19 +42,27 @@
                     </div>
                 </div>
 
-                {{-- Here Will Be Loaded All Blade Files --}}
+                
                 @yield('content')
 
 
             </section>
         </div>
+        <!--// admin panel main content loads here -->
+
+
+
     </div>
 </div>
 
-{{-- Custom JS Files --}}
+<!-- Custom JS Files -->
 @include('admin.layout.scripts_footer')
+<!--// Custom JS Files -->
 
-{{-- Because There Have Multiple Errors --}}
+
+
+
+<!-- iziToast functionality code here -->
 @if ($errors->any())
     @foreach ($errors->all() as $error)
         <script>
@@ -81,6 +94,10 @@
         });
     </script>
 @endif
+<!--// iziToast functionality code here -->
+
+
+
 
 </body>
 </html>

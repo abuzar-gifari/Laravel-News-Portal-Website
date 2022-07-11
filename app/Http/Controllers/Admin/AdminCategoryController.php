@@ -28,6 +28,10 @@ class AdminCategoryController extends Controller
             'category_name' => 'required|unique:categories',
             'show_on_menu' => 'required',
             'category_order' => 'required',
+        ],[
+            'category_name.required' => 'category name is required',
+            'show_on_menu.required' => 'want to show on menu?',
+            'category_order.required' => 'category order is required',
         ]);
         // send data to the database
         $category->category_name = $request->category_name;

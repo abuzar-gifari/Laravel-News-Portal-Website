@@ -29,6 +29,9 @@ class AdminFAQController extends Controller
         $request->validate([
             'faq_title' => 'required',
             'faq_detail' => 'required',
+        ],[
+            'faq_title.required' => 'FAQ Title is required',
+            'faq_detail.required' => 'FAQ Detail is required',
         ]);
 
         // send data to the database
@@ -54,6 +57,9 @@ class AdminFAQController extends Controller
         $request->validate([
             'faq_title' => 'required',
             'faq_detail' => 'required',
+        ],[
+            'faq_title.required' => 'FAQ Title is required',
+            'faq_detail.required' => 'FAQ Detail is required',
         ]);
 
         // send data to the database

@@ -35,6 +35,12 @@ class AdminSubCategoryController extends Controller
             'sub_category_order' => 'required',
             'category_id' => 'required',
             'language_id'=>'required'
+        ],[
+            'sub_category_name.required' => 'SubCategory name is required',
+            'show_on_menu.required' => 'Want to show it on menu?',
+            'sub_category_order.required' => 'SubCategory order is required',
+            'category_id.required' => 'Select a category',
+            'language_id.required' => 'Select a language',
         ]);
         // send data to the database
         $subcategory->sub_category_name = $request->sub_category_name;
@@ -68,6 +74,12 @@ class AdminSubCategoryController extends Controller
             'sub_category_order' => 'required',
             'category_id' => 'required',
             'language_id'=>'required'
+        ],[
+            'sub_category_name.required' => 'SubCategory name is required',
+            'show_on_menu.required' => 'Want to show it on menu?',
+            'sub_category_order.required' => 'SubCategory order is required',
+            'category_id.required' => 'Select a category',
+            'language_id.required' => 'Select a language',
         ]);
         // send data to the database
         $subcategory->sub_category_name = $request->sub_category_name;

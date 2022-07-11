@@ -19,7 +19,7 @@ class AuthorPostController extends Controller
 
     // show post page
     public function show(){
-        $posts = Post::with('rSubCategory.rCategory')->where('author_id',Auth::guard('author')->user()->id)->get();
+        $posts = Post::with('rSubCategory.rCategory','rLanguage')->where('author_id',Auth::guard('author')->user()->id)->get();
         return view('author.posts',compact('posts'));
     }
     
@@ -65,6 +65,7 @@ class AuthorPostController extends Controller
         $post->author_id = Auth::guard('author')->user()->id;
         $post->is_share = $request->is_share;
         $post->is_comment = $request->is_comment;
+        $post->language_id = $request->language_id;
         // store in the table
         $post->save();
 
@@ -170,6 +171,7 @@ class AuthorPostController extends Controller
         $post->author_id = Auth::guard('author')->user()->id; // we can get author id
         $post->is_share = $request->is_share;
         $post->is_comment = $request->is_comment;
+        $post->language_id = $request->language_id;
         // store in the table
         $post->update();
 

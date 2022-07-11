@@ -51,6 +51,7 @@
 
             @php
                 $all_tags = \App\Models\Tag::select('tag_name')->distinct()->get();
+                // echo $all_tags;
             @endphp
 
             @foreach ($all_tags as $item)
@@ -58,20 +59,17 @@
                     $count = 0;
                     $all_data = \App\Models\Tag::where('tag_name',$item->tag_name)->get();
 
-                    foreach($all_data as $row)
-                    {
+                    foreach($all_data as $row){
                         $temp = \App\Models\Post::where('id',$row->post_id)->where('language_id',$current_language_id)->count();
-                        if ($temp > 0) 
-                        {
+
+                        if ($temp > 0){
                             $count = 1;
                             break;
                         }
                     }
-                    if ($count == 0) 
-                    {
-                        continue;
-                    }
+                    if ($count == 0) { continue; }
                 @endphp
+                
                 <div class="tag-item">
                     <a href="{{ route('tag_show',$item->tag_name) }}"><span class="badge bg-secondary">{{ $item->tag_name }}</span></a>
                 </div>

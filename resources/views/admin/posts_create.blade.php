@@ -63,6 +63,12 @@
                                 <option value="0">No</option>
                             </select>
                         </div>
+                        {{-- <div class="form-group mb-3">
+                            <label>Aminities</label><br>
+                            <label><input type="checkbox" name="checkbox[]" value="Hot" > Hot</label><br>
+                            <label><input type="checkbox" name="checkbox[]" value="New" > New</label><br>
+                            <label><input type="checkbox" name="checkbox[]" value="Popular" > Popular</label>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -72,6 +78,47 @@
         </div>
     </form>
 </div>
+{{-- 
+
+
+<table class="_table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th width="50px">
+          <div class="action_container">
+            <button class="success" onclick="create_tr('table_body')">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody id="table_body">
+      <tr>
+        <td>
+          <input type="text" class="form_control" placeholder="Jhon Dhoe">
+        </td>
+        <td>
+          <input type="text" class="form_control" placeholder="+880177x-xxxxxx">
+        </td>
+        <td>
+          <textarea class="form_control" placeholder="Enter Your Address..."></textarea>
+        </td>
+        <td>
+          <div class="action_container">
+            <button class="danger" onclick="remove_tr(this)">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table> --}}
+
+
 @endsection
 
 @section('button')
@@ -79,3 +126,118 @@
         <a href="{{ route('admin_post_show') }}" class="btn btn-primary"><i class="fas fa-eye"></i> View</a>
     </div>
 @endsection
+
+
+
+
+{{-- 
+<style>
+._table {
+    width: 100%;
+    border-collapse: collapse;
+}
+._table :is(th, td) {
+    border: 1px solid #0002;
+    padding: 8px 10px;
+}
+/* form field design start */
+.form_control {
+    border: 1px solid #0002;
+    background-color: transparent;
+    outline: none;
+    padding: 8px 12px;
+    font-family: 1.2rem;
+    width: 100%;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.3s ease-in-out;
+}
+.form_control::placeholder {
+    color: inherit;
+    opacity: 0.5;
+}
+.form_control:is(:focus, :hover) {
+    box-shadow: inset 0 1px 6px #0002;
+}
+/* form field design end */
+.success {
+    background-color: #24b96f !important;
+}
+.warning {
+    background-color: #ebba33 !important;
+}
+.primary {
+    background-color: #259dff !important;
+}
+.secondery {
+    background-color: #00bcd4 !important;
+}
+.danger {
+    background-color: #ff5722 !important;
+}
+.action_container {
+    display: inline-flex;
+}
+.action_container>* {
+    border: none;
+    outline: none;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.action_container>*+* {
+    border-left: 1px solid #fff5;
+}
+.action_container>*:hover {
+    filter: hue-rotate(-20deg) brightness(0.97);
+    transform: scale(1.05);
+    border-color: transparent;
+    box-shadow: 0 2px 10px #0004;
+    border-radius: 2px;
+}
+.action_container>*:active {
+    transition: unset;
+    transform: scale(.95);
+}
+</style>
+
+
+
+
+<script>
+
+function create_tr(table_id) {
+    let table_body = document.getElementById(table_id),
+        first_tr   = table_body.firstElementChild
+        tr_clone   = first_tr.cloneNode(true);
+
+    table_body.append(tr_clone);
+
+    clean_first_tr(table_body.firstElementChild);
+}
+
+function clean_first_tr(firstTr) {
+    let children = firstTr.children;
+    
+    children = Array.isArray(children) ? children : Object.values(children);
+    children.forEach(x=>{
+        if(x !== firstTr.lastElementChild)
+        {
+            x.firstElementChild.value = '';
+        }
+    });
+}
+
+function remove_tr(This) {
+    if(This.closest('tbody').childElementCount == 1)
+    {
+        alert("You Don't have Permission to Delete This ?");
+    }else{
+        This.closest('tr').remove();
+    }
+}
+
+</script> --}}

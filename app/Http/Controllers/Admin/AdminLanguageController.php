@@ -124,7 +124,8 @@ class AdminLanguageController extends Controller
             $arr2[] = $val;
         }
 
-        for ($i=0; $i < count($arr1); $i++) { 
+        for ($i=0; $i < count($arr1); $i++) 
+        { 
             $data[$arr1[$i]] = $arr2[$i];
         }
 

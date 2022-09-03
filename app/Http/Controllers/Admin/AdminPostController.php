@@ -10,8 +10,10 @@ use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Aminitie;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+
 
 class AdminPostController extends Controller
 {
@@ -114,7 +116,20 @@ class AdminPostController extends Controller
             
             }
         }
-        
+
+
+        // // Checkbox
+
+        // foreach($request->checkbox as $key=>$value){
+        //     $insert = [
+        //         'post_id' => $auto_increment_id,
+        //         'aminities_name' => $request->checkbox[$key]
+        //     ];
+        //     DB::table('aminities')->insert($insert);
+        // }
+ 
+
+
 
         return redirect()->route('admin_post_show')->with('success_message','Post Created Successfully');
     }
@@ -131,7 +146,10 @@ class AdminPostController extends Controller
         $posts = Post::where('id',$id)->first();
         $existing_tags = Tag::where('post_id',$id)->get();
         $subcategories = SubCategory::with('rCategory')->get();
+
+
         return view('admin.posts_edit',compact('posts','subcategories','existing_tags'));
+
     }
 
     // delete tag
